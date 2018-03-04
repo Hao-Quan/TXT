@@ -1,0 +1,11 @@
+<cpdlc-message flight-id="AAL123" direction="up">
+    <header>
+        <date>10:59:33</date>
+        <time/>
+    </header>
+    <msg-element id="19">
+        <level>
+            <leveldata units="flightLevel">300</leveldata>
+        </level>
+    </msg-element>
+</cpdlc-message>
