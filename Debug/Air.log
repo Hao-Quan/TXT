@@ -1,0 +1,25 @@
+﻿Build started 2018-03-11 16:16:00.
+     1>Project "C:\Users\QUANHAO\documents\visual studio 2010\Projects\Air\Air\Air.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\Air.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\Air.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt xmltest.cpp
+         xmltest.cpp
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\QUANHAO\documents\visual studio 2010\Projects\air\Debug\Air.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Air.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\QUANHAO\documents\visual studio 2010\Projects\air\Debug\Air.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\QUANHAO\documents\visual studio 2010\Projects\air\Debug\Air.lib" /MACHINE:X86 Debug\Myxml.obj
+         Debug\stdafx.obj
+         Debug\tinyxml2.obj
+         Debug\xmltest.obj
+     1>Myxml.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
+         Air.vcxproj -> C:\Users\QUANHAO\documents\visual studio 2010\Projects\air\Debug\Air.exe
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\QUANHAO\documents\visual studio 2010\Projects\air\Debug\Air.exe;#1" /manifest Debug\Air.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\Air.unsuccessfulbuild".
+         Touching "Debug\Air.lastbuildstate".
+     1>Done Building Project "C:\Users\QUANHAO\documents\visual studio 2010\Projects\Air\Air\Air.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.97
