@@ -16,13 +16,6 @@ using namespace tinyxml2;
 
 
 int main(){
-	
-	///**************************************************
-	//*		DOWN: STRUCTURE to XML				  	 *
-	//*												 *
-	//*	Input: structure with message down65		 *
-	//*	Output: XML "Due to weather"			     *
-	//***************************************************/
 
 	Data_link down65_data_link;
 	down65_data_link.msg_element_id = "65";
@@ -34,23 +27,29 @@ int main(){
 	down65_data_link.value2 = "2002/03/29";
 	down65_data_link.value3 = "10:59:33";
 
-	//down_struct_to_XML(down65);
-	//vector<string> vector_databytes = down_XML_to_bytes("Down65.xml");
-	//
-	//for (int i = 0; i < vector_databytes.size(); i++)
-	//	cout << vector_databytes[i] + " ";
-	//cout << "\n";
-
-	/*vector<string> bytes_Down65 = down_XML_to_bytes("Down65.xml");
-
-	up_bytes_to_XML(bytes_Down65, "Upxx.xml");*/
+	///**************************************************
+	//*		DOWN: STRUCTURE to Byte Data				*
+	//*													*
+	//*	Input: Structure with message down65			*
+	//*	Output: HEX DataBytes "Due to weather"			*
+	//***************************************************/
 
 	vector<string> databytes_down65 = down_struct_to_bytes(down65_data_link, "Down65.xml");
+
+	/**************************************************** 
+	//*		UP: Byte Data to  STRUCTURE					*
+	//*													*
+	//*	Input: HEX DataBytes "Due to weather"			*
+	//*	Output: Structure with message "Upxx.xml"		*
+	//***************************************************/
 
 	Data_link dl = up_bytes_to_struct(databytes_down65, "Upxx.xml");
 
 	cout << "\n";
 
+	system("pause");
+	return 0;
+}
 
 	///************************************************************************
 	//*		UP: XML to STRUCTURE				  	 						*
@@ -96,9 +95,7 @@ int main(){
 
 	//cout<< "\n\n----Finised----\n";
 
-	system("pause");
-	return 0;
-}
+
 
 
 
