@@ -1,0 +1,16 @@
+<cpdlc-message flight-id="AAL123" direction="up">
+    <header>
+        <date>2002/03/29</date>
+        <time>10:59:33</time>
+    </header>
+    <msg-element id="46">
+    	<position>
+        	<airport role="departure">"LIMC"</airport>
+        </position>
+    
+    	<level>
+            <leveldata units="flightLevel">300</leveldata>
+        </level>
+       
+    </msg-element>
+</cpdlc-message>
