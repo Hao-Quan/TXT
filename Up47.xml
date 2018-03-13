@@ -5,11 +5,25 @@
     </header>
     <msg-element id="47"/>
 		<position>
-			<navaid>
+			<navaid name="PPP">
 				<latLong>
-					<latitude direction="south"></latitude>
-					<longitude></longitude>
+					<latitude direction="south">
+						<degrees units="magnetic" role="bearing">67</degrees>
+						<minutes units="magnetic" role="bearing">50</minutes>
+						<seconds units="magnetic" role="bearing">12</seconds>
+					</latitude>
+					<longitude direction="west">
+						<degrees units="magnetic" role="bearing">67</degrees>
+						<minutes>50</minutes>
+						<seconds>12</seconds>
+					</longitude>
 				</latLong>
 			</navaid>
+			
+			<degrees units="magnetic" role="bearing">89</degrees>
+			
+			<distance units="kilometres" atwTolerance="plus" specified="yes">
+				12	
+			</distance>
 		</position>
 </cpdlc-message>
