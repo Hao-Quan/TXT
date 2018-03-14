@@ -141,8 +141,33 @@ Data_link	up_XML_to_struct(string xml_filename) {
 			for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
 				const char *element_name_sub = item->Name();
 				if (!strcmp(element_name_sub, "position")) {
-					XMLElement *airport_element = item->FirstChildElement("airport");
-					const char *airport_value = airport_element->GetText();
+					const char *position_direction = NULL;
+					const char *position_role = NULL;
+					if (item->Attribute("direction"))
+						position_direction = item->Attribute("direction");
+					if (item->Attribute("role"))
+						position_role = item->Attribute("role");
+
+					XMLElement *fix_element = NULL;
+					XMLElement *navaid_element = NULL;					
+					XMLElement *latLong_element = NULL;
+					XMLElement *latitude_element = NULL;
+					const char *name;
+					if (item->FirstChildElement("fix")){
+						fix_element = item->FirstChildElement("fix");
+						name = fix_element->Attribute("name");
+						
+						latLong_element = fix_element->FirstChildElement("latLong");
+						latitude = latLong_element->FirstChildElement("latitude");
+					}
+					else {
+						// It has element "navaid"
+						navaid_element = item->FirstChildElement("navaid");
+						name = navaid_element->Attribute("name");
+					}
+					
+
+					/*const char *airport_value = airport_element->GetText();
 					data_link.param5 = airport_element->Name();
 					data_link.value5 = airport_value;
 					count++;
@@ -150,10 +175,11 @@ Data_link	up_XML_to_struct(string xml_filename) {
 					const char *role_value = airport_element->Attribute("role");
 					data_link.param6 = "role";
 					data_link.value6 = role_value;
-					count++;
+					count++;*/
+					}
 				}
 
-				if (!strcmp(element_name_sub, "level")) {
+	/*			if (!strcmp(element_name_sub, "level")) {
 					XMLElement *leveldata_element = item->FirstChildElement("leveldata");
 					const char *leveldata_value = leveldata_element->GetText();
 					const char *units_value = leveldata_element->Attribute("units");
@@ -183,7 +209,8 @@ Data_link	up_XML_to_struct(string xml_filename) {
 					}
 				}
 
-			}
+			}*/
+			
 
 		}
 
