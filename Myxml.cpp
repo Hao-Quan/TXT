@@ -152,13 +152,47 @@ Data_link	up_XML_to_struct(string xml_filename) {
 					XMLElement *navaid_element = NULL;					
 					XMLElement *latLong_element = NULL;
 					XMLElement *latitude_element = NULL;
+					XMLElement *fix_latLong_latitude_element = NULL;
+					XMLElement *fix_latLong_latitude_degrees_element = NULL;
+
 					const char *name;
+					const char *fix_latitude_direction;
+					const char *fix_latLong_latitude_degrees_units;
+					const char *fix_latLong_latitude_degrees_role;
+					const char *fix_latLong_latitude_degrees;
+					const char *fix_latLong_latitude_minutes;
+					const char *fix_latLong_latitude_seconds;
+
 					if (item->FirstChildElement("fix")){
 						fix_element = item->FirstChildElement("fix");
 						name = fix_element->Attribute("name");
 						
-						latLong_element = fix_element->FirstChildElement("latLong");
-						latitude = latLong_element->FirstChildElement("latitude");
+						if (fix_element->FirstChildElement("latLong")) {
+							latLong_element = fix_element->FirstChildElement("latLong");
+							if (latLong_element->FirstChildElement("latitude")) {
+								fix_latLong_latitude_element = latLong_element->FirstChildElement("latitude");
+								fix_latitude_direction = fix_latLong_latitude_element->Attribute("direction");
+
+								//  fix_latLong_latitude_degrees
+								fix_latLong_latitude_degrees_element = fix_latLong_latitude_element->FirstChildElement("degrees");
+								fix_latLong_latitude_degrees_units = fix_latLong_latitude_degrees_element->Attribute("units");
+								if (fix_latLong_latitude_degrees_element->Attribute("role"))
+									fix_latLong_latitude_degrees_role = fix_latLong_latitude_degrees_element->Attribute("role");
+								fix_latLong_latitude_degrees = fix_latLong_latitude_degrees_element->GetText();
+
+								//  fix_latLong_latitude_minuts
+								if (fix_latLong_latitude_element->FirstChildElement("minutes"))
+									fix_latLong_latitude_minutes = fix_latLong_latitude_element->FirstChildElement("minutes")->GetText();
+								
+								//  fix_latLong_latitude_seconds
+								if (fix_latLong_latitude_element->FirstChildElement("seconds"));
+									fix_latLong_latitude_seconds = fix_latLong_latitude_element->FirstChildElement("seconds")->GetText();
+							}
+						}
+
+
+						/*latLong_element = fix_element->FirstChildElement("latLong");
+						latitude_element = latLong_element->FirstChildElement("latitude");*/
 					}
 					else {
 						// It has element "navaid"
