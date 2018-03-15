@@ -3,14 +3,29 @@
         <date>2018/03/12</date>
         <time>22:36:43</time>
     </header>
-    <msg-element id="47"/>
+    <msg-element id="47">
 		<position>
-			<navaid name="PPP">
+			<fix name="FFFF">
+				<latLong> <!-- ? -->
+					<latitude direction="south"> <!-- ? -->
+						<degrees units="magnetic" role="bearing">67</degrees> <!--  -->
+						<minutes>50</minutes> 	<!-- ? -->
+						<seconds>12</seconds>	<!-- ? -->
+					</latitude>
+					<longitude direction="west"> <!-- ? -->
+						<degrees units="magnetic" role="bearing">67</degrees>
+						<minutes>50</minutes>
+						<seconds>12</seconds>
+					</longitude>
+				</latLong>
+			</fix>
+			
+			<navaid name="FFFF">
 				<latLong>
 					<latitude direction="south">
 						<degrees units="magnetic" role="bearing">67</degrees>
-						<minutes units="magnetic" role="bearing">50</minutes>
-						<seconds units="magnetic" role="bearing">12</seconds>
+						<minutes>50</minutes> 
+						<seconds>12</seconds>
 					</latitude>
 					<longitude direction="west">
 						<degrees units="magnetic" role="bearing">67</degrees>
@@ -25,5 +40,11 @@
 			<distance units="kilometres" atwTolerance="plus" specified="yes">
 				12	
 			</distance>
+			
+			<!--
+			<airport></airport>
+			<latLong></latLong>
+			-->
 		</position>
+	</msg-element>
 </cpdlc-message>
