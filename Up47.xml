@@ -5,35 +5,39 @@
     </header>
     <msg-element id="47">
 		<position>
+			<!--
 			<fix name="FFFF">
-				<latLong> <!-- ? -->
-					<latitude direction="south"> <!-- ? -->
-						<degrees units="magnetic" role="bearing">67</degrees> <!--  -->
-						<minutes>50</minutes> 	<!-- ? -->
-						<seconds>12</seconds>	<!-- ? -->
+				<latLong> 
+					<latitude direction="south"> 
+						<degrees units="magnetic" role="bearing">6</degrees> 
+						<minutes>66</minutes> 	
+						<seconds>63</seconds>	
 					</latitude>
-					<longitude direction="west"> <!-- ? -->
-						<degrees units="magnetic" role="bearing">67</degrees>
-						<minutes>50</minutes>
-						<seconds>12</seconds>
+					<longitude direction="west"> 
+						<degrees units="magnetic" role="bearing">7</degrees>
+						<minutes>70</minutes>
+						<seconds>72</seconds>
 					</longitude>
 				</latLong>
 			</fix>
+			-->
+		
 			
-			<navaid name="FFFF">
+			<navaid name="XXXXX">
 				<latLong>
-					<latitude direction="south">
-						<degrees units="magnetic" role="bearing">67</degrees>
-						<minutes>50</minutes> 
+					<latitude direction="north">
+						<degrees units="magnetic" role="bearing">17</degrees>
+						<minutes>10</minutes> 
 						<seconds>12</seconds>
 					</latitude>
 					<longitude direction="west">
-						<degrees units="magnetic" role="bearing">67</degrees>
-						<minutes>50</minutes>
-						<seconds>12</seconds>
+						<degrees units="magnetic" role="bearing">21</degrees>
+						<minutes>22</minutes>
+						<seconds>28</seconds>
 					</longitude>
 				</latLong>
 			</navaid>
+			
 			
 			<degrees units="magnetic" role="bearing">89</degrees>
 			

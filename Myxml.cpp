@@ -148,90 +148,84 @@ Data_link	up_XML_to_struct(string xml_filename) {
 					if (item->Attribute("role"))
 						position_role = item->Attribute("role");
 
-					XMLElement *fix_element = NULL;
+					XMLElement *fix_o_navaid_element = NULL;
 					XMLElement *navaid_element = NULL;	
 
 					XMLElement *latLong_element = NULL;
 					XMLElement *latitude_element = NULL;
-					XMLElement *fix_latLong_latitude_element = NULL;
-					XMLElement *fix_latLong_latitude_degrees_element = NULL;
-					const char *name;
-					const char *fix_latitude_direction;
-					const char *fix_latLong_latitude_degrees_units;
-					const char *fix_latLong_latitude_degrees_role;
-					const char *fix_latLong_latitude_degrees;
-					const char *fix_latLong_latitude_minutes;
-					const char *fix_latLong_latitude_seconds;
+					XMLElement *latLong_latitude_element = NULL;
+					XMLElement *latLong_latitude_degrees_element = NULL;
+					const char *fix_o_navaid_name;
+					const char *latitude_direction;
+					const char *latLong_latitude_degrees_units;
+					const char *latLong_latitude_degrees_role;
+					const char *latLong_latitude_degrees;
+					const char *latLong_latitude_minutes;
+					const char *latLong_latitude_seconds;
 
-					//XMLElement *fix_element = NULL;
-					//XMLElement *navaid_element = NULL;					
-					//XMLElement *latLong_element = NULL;
-					XMLElement *longitude_element = NULL;
-					XMLElement *fix_latLong_longitude_element = NULL;
-					XMLElement *fix_latLong_longitude_degrees_element = NULL;
-					const char *fix_longitude_direction;
-					const char *fix_latLong_longitude_degrees_units;
-					const char *fix_latLong_longitude_degrees_role;
-					const char *fix_latLong_longitude_degrees;
-					const char *fix_latLong_longitude_minutes;
-					const char *fix_latLong_longitude_seconds;
+					XMLElement *latLong_longitude_element = NULL;
+					XMLElement *latLong_longitude_degrees_element = NULL;
+					const char *longitude_direction;
+					const char *latLong_longitude_degrees_units;
+					const char *latLong_longitude_degrees_role;
+					const char *latLong_longitude_degrees;
+					const char *latLong_longitude_minutes;
+					const char *latLong_longitude_seconds;
 
 					if (item->FirstChildElement("fix")){
-						fix_element = item->FirstChildElement("fix");
-						name = fix_element->Attribute("name");
-						
-						if (fix_element->FirstChildElement("latLong")) {
-							latLong_element = fix_element->FirstChildElement("latLong");
-							if (latLong_element->FirstChildElement("latitude")) {
-								fix_latLong_latitude_element = latLong_element->FirstChildElement("latitude");
-								fix_latitude_direction = fix_latLong_latitude_element->Attribute("direction");
-
-								//  fix_latLong_latitude_degrees
-								fix_latLong_latitude_degrees_element = fix_latLong_latitude_element->FirstChildElement("degrees");
-								fix_latLong_latitude_degrees_units = fix_latLong_latitude_degrees_element->Attribute("units");
-								if (fix_latLong_latitude_degrees_element->Attribute("role"))
-									fix_latLong_latitude_degrees_role = fix_latLong_latitude_degrees_element->Attribute("role");
-								fix_latLong_latitude_degrees = fix_latLong_latitude_degrees_element->GetText();
-
-								//  fix_latLong_latitude_minuts
-								if (fix_latLong_latitude_element->FirstChildElement("minutes"))
-									fix_latLong_latitude_minutes = fix_latLong_latitude_element->FirstChildElement("minutes")->GetText();
-								
-								//  fix_latLong_latitude_seconds
-								if (fix_latLong_latitude_element->FirstChildElement("seconds"));
-									fix_latLong_latitude_seconds = fix_latLong_latitude_element->FirstChildElement("seconds")->GetText();
-							}
-
-
-							if (latLong_element->FirstChildElement("longitude")) {
-								fix_latLong_longitude_element = latLong_element->FirstChildElement("longitude");
-								fix_longitude_direction = fix_latLong_longitude_element->Attribute("direction");
-
-								//  fix_latLong_latitude_degrees
-								fix_latLong_longitude_degrees_element = fix_latLong_longitude_element->FirstChildElement("degrees");
-								fix_latLong_longitude_degrees_units = fix_latLong_longitude_degrees_element->Attribute("units");
-								if (fix_latLong_longitude_degrees_element->Attribute("role"))
-									fix_latLong_longitude_degrees_role = fix_latLong_longitude_degrees_element->Attribute("role");
-								fix_latLong_longitude_degrees = fix_latLong_longitude_degrees_element->GetText();
-
-								//  fix_latLong_latitude_minuts
-								if (fix_latLong_longitude_element->FirstChildElement("minutes"))
-									fix_latLong_longitude_minutes = fix_latLong_longitude_element->FirstChildElement("minutes")->GetText();
-								
-								//  fix_latLong_latitude_seconds
-								if (fix_latLong_longitude_element->FirstChildElement("seconds"));
-									fix_latLong_longitude_seconds = fix_latLong_longitude_element->FirstChildElement("seconds")->GetText();
-							}
-						}
-
-
+						fix_o_navaid_element = item->FirstChildElement("fix");
 						
 					}
 					else {
-						// It has element "navaid"
-						navaid_element = item->FirstChildElement("navaid");
-						name = navaid_element->Attribute("name");
+						fix_o_navaid_element = item->FirstChildElement("navaid");
 					}
+					fix_o_navaid_name = fix_o_navaid_element->Attribute("name");
+
+					if (fix_o_navaid_element->FirstChildElement("latLong")) {
+						latLong_element = fix_o_navaid_element->FirstChildElement("latLong");
+						if (latLong_element->FirstChildElement("latitude")) {
+							latLong_latitude_element = latLong_element->FirstChildElement("latitude");
+							latitude_direction = latLong_latitude_element->Attribute("direction");
+
+							//  latLong_latitude_degrees
+							latLong_latitude_degrees_element = latLong_latitude_element->FirstChildElement("degrees");
+							latLong_latitude_degrees_units = latLong_latitude_degrees_element->Attribute("units");
+							if (latLong_latitude_degrees_element->Attribute("role"))
+								latLong_latitude_degrees_role = latLong_latitude_degrees_element->Attribute("role");
+							latLong_latitude_degrees = latLong_latitude_degrees_element->GetText();
+
+							//  latLong_latitude_minuts
+							if (latLong_latitude_element->FirstChildElement("minutes"))
+								latLong_latitude_minutes = latLong_latitude_element->FirstChildElement("minutes")->GetText();
+								
+							//  latLong_latitude_seconds
+							if (latLong_latitude_element->FirstChildElement("seconds"))
+								latLong_latitude_seconds = latLong_latitude_element->FirstChildElement("seconds")->GetText();
+						}
+
+
+						if (latLong_element->FirstChildElement("longitude")) {
+							latLong_longitude_element = latLong_element->FirstChildElement("longitude");
+							longitude_direction = latLong_longitude_element->Attribute("direction");
+
+							//  latLong_latitude_degrees
+							latLong_longitude_degrees_element = latLong_longitude_element->FirstChildElement("degrees");
+							latLong_longitude_degrees_units = latLong_longitude_degrees_element->Attribute("units");
+							if (latLong_longitude_degrees_element->Attribute("role"))
+								latLong_longitude_degrees_role = latLong_longitude_degrees_element->Attribute("role");
+							latLong_longitude_degrees = latLong_longitude_degrees_element->GetText();
+
+							//  latLong_latitude_minuts
+							if (latLong_longitude_element->FirstChildElement("minutes"))
+								latLong_longitude_minutes = latLong_longitude_element->FirstChildElement("minutes")->GetText();
+								
+							//  fix_latLong_latitude_seconds
+							if (latLong_longitude_element->FirstChildElement("seconds"));
+								latLong_longitude_seconds = latLong_longitude_element->FirstChildElement("seconds")->GetText();
+						}
+					}
+
+					cout << "c";
 					
 
 					/*const char *airport_value = airport_element->GetText();
