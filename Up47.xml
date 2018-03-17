@@ -4,7 +4,7 @@
         <time>22:36:43</time>
     </header>
     <msg-element id="47">
-		<position>
+		<position direction="to" role="current">
 			<!--
 			<fix name="FFFF">
 				<latLong> 
