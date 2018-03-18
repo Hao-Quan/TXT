@@ -100,6 +100,14 @@ Data_link	up_XML_to_struct(string xml_filename) {
 	data_link.param31 = "empty";
 	data_link.param32 = "empty";
 	data_link.param33 = "empty";
+	data_link.param34 = "empty";
+	data_link.param35 = "empty";
+	data_link.param36 = "empty";
+	data_link.param37 = "empty";
+	data_link.param38 = "empty";
+	data_link.param39 = "empty";
+	data_link.param40 = "empty";
+	data_link.param41 = "empty";
 
 
 	data_link.value1 = "empty";
@@ -135,6 +143,14 @@ Data_link	up_XML_to_struct(string xml_filename) {
 	data_link.value31 = "empty";
 	data_link.value32 = "empty";
 	data_link.value33 = "empty";
+	data_link.value34 = "empty";
+	data_link.value35 = "empty";
+	data_link.value36 = "empty";
+	data_link.value37 = "empty";
+	data_link.value38 = "empty";
+	data_link.value39 = "empty";
+	data_link.value40 = "empty";
+	data_link.value41 = "empty";
 
 	XMLDocument xmlDoc;
 	//XMLError eResult = xmlDoc.LoadFile(xml_filename.c_str());
