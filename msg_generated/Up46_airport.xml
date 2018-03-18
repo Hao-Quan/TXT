@@ -4,9 +4,8 @@
         <time>22:36:43</time>
     </header>
     <msg-element id="47">
-		<position direction="to" role="current">
-			<!--
-			<fix name="FFFF">
+        <position direction="to" role="current">
+            <!-- <fix name="FFFF">
 				<latLong> 
 					<latitude direction="south"> 
 						<degrees units="magnetic" role="bearing">6</degrees> 
@@ -19,10 +18,8 @@
 						<seconds>72</seconds>
 					</longitude>
 				</latLong>
-			</fix>
-			-->
-		
-			
+			</fix>  -->
+            <!--
 			<navaid name="XXXXX">
 				<latLong>
 					<latitude direction="north">
@@ -37,18 +34,33 @@
 					</longitude>
 				</latLong>
 			</navaid>
-			
-			
-			<degrees units="magnetic" role="bearing">89</degrees>
+			-->
+            <!-- <degrees units="magnetic" role="bearing">89</degrees>
 			
 			<distance units="kilometres" atwTolerance="plus" specified="yes">
 				12	
-			</distance>
-			
-			<!--
-			<airport></airport>
-			<latLong></latLong>
+			</distance> -->
+            <airport role="departure">
+				MALPENSA
+			</airport>
+            <!--
+			<latLong>
+				<latitude direction="north">
+					<degrees units="magnetic" role="bearing">97</degrees>
+					<minutes>90</minutes> 
+					<seconds>92</seconds>
+				</latitude>
+				<longitude direction="west">
+					<degrees units="magnetic" role="bearing">81</degrees>
+					<minutes>82</minutes>
+					<seconds>88</seconds>
+				</longitude>
+			</latLong>
 			-->
-		</position>
-	</msg-element>
+        </position>
+        <level atwTolerance="at" type="current">
+            <leveldata units="flightLevel" role="waypoint">300</leveldata>
+            <leveldata units="metres" role="current">560</leveldata>
+        </level>
+    </msg-element>
 </cpdlc-message>

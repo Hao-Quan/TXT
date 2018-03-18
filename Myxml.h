@@ -109,6 +109,38 @@ typedef struct Data_link {
 	string param7;
 	string param8;
 	string param9;
+	string param10;
+	string param11;
+	string param12;
+	string param13;
+	string param14;
+	string param15;
+	string param16;
+	string param17;
+	string param18;
+	string param19;
+	string param20;
+	string param21;
+	string param22;
+	string param23;
+	string param24;
+	string param25;
+	string param26;
+	string param27;
+	string param28;
+	string param29;
+	string param30;
+	string param31;
+	string param32;
+	string param33;
+	string param34;
+	string param35;
+	string param36;
+	string param37;
+	string param38;
+	string param39;
+	string param40;
+	string param41;
 
 	string value1;	// "flight_id: AAL123"
 	string value2;	// "date: 2002/03/29"
@@ -119,6 +151,39 @@ typedef struct Data_link {
 	string value7;
 	string value8;
 	string value9;
+	string value10;
+	string value11;
+	string value12;
+	string value13;
+	string value14;
+	string value15;
+	string value16;
+	string value17;
+	string value18;
+	string value19;
+	string value20;
+	string value21;
+	string value22;
+	string value23;
+	string value24;
+	string value25;
+	string value26;
+	string value27;
+	string value28;
+	string value29;
+	string value30;
+	string value31;
+	string value32;
+	string value33;
+	string value34;
+	string value35;
+	string value36;
+	string value37;
+	string value38;
+	string value39;
+	string value40;
+	string value41;
+
 
 } Data_link;
 

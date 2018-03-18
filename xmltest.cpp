@@ -1,8 +1,10 @@
 #include "stdafx.h"
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 #include "Myxml.h"
 #include "tinyxml2.h"
@@ -17,33 +19,59 @@ using namespace tinyxml2;
 
 int main(){
 
-	Data_link down65_data_link;
-	down65_data_link.msg_element_id = "65";
-	down65_data_link.param1 = "flight_id";
-	down65_data_link.param2 = "date";
-	down65_data_link.param3 = "time";
+	//Data_link down65_data_link;
+	//down65_data_link.msg_element_id = "65";
+	//down65_data_link.param1 = "flight_id";
+	//down65_data_link.param2 = "date";
+	//down65_data_link.param3 = "time";
 
-	down65_data_link.value1 = "AAL123";
-	down65_data_link.value2 = "2002/03/29";
-	down65_data_link.value3 = "10:59:33";
+	//down65_data_link.value1 = "AAL123";
+	//down65_data_link.value2 = "2002/03/29";
+	//down65_data_link.value3 = "10:59:33";
 
-	///**************************************************
-	//*		DOWN: STRUCTURE to Byte Data				*
-	//*													*
-	//*	Input: Structure with message down65			*
-	//*	Output: HEX DataBytes "Due to weather"			*
-	//***************************************************/
+	/**************************************************
+	*		DOWN: STRUCTURE to Byte Data				*
+	*													*
+	*	Input: Structure with message down65			*
+	*	Output: HEX DataBytes "Due to weather"			*
+	*													*
+	*   Release Date: 11-03-2018						*
+	*****************************************************/
 
-	vector<string> databytes_down65 = down_struct_to_bytes(down65_data_link, "Down65.xml");
+	//vector<string> databytes_down65 = down_struct_to_bytes(down65_data_link, "Down65.xml");
 
 	/**************************************************** 
-	//*		UP: Byte Data to  STRUCTURE					*
-	//*													*
-	//*	Input: HEX DataBytes "Due to weather"			*
-	//*	Output: Structure with message "Upxx.xml"		*
-	//***************************************************/
+	*		UP: byte data to  structure					*
+	*													*
+	*	Input: hex databytes "due to weather"			*
+	*	Output: structure with message "upxx.xml"		*
+	*													*
+	*   Release Date: 11-03-2018						*
+	****************************************************/
 
-	Data_link dl = up_bytes_to_struct(databytes_down65, "Upxx.xml");
+	//Data_link dl = up_bytes_to_struct(databytes_down65, "Upxx.xml");
+
+
+	/****************************************************************************
+	*		UP: Byte Data to  STRUCTURE	for all possibile						*
+	*					msg up46, up47, up48									*
+	*																			*
+	*	Input: HEX DataBytes "up46, up47, up48"									*
+	*	Output: Structure with message "Up46.xml" "Up47.xml", "Up48.xml"		*
+	*																			*
+	*	Release Date: 18-03-2018												*
+	*****************************************************************************/
+
+
+	vector<string> bytes_up46 = down_XML_to_bytes("Up46_airport.xml");
+	Data_link dlup46 = up_bytes_to_struct(bytes_up46, "Up46_airport.xml");
+
+	vector<string> bytes_up47 = down_XML_to_bytes("Up47.xml");
+	Data_link dlup47 = up_bytes_to_struct(bytes_up47, "Up47.xml");
+
+	vector<string> bytes_up48 = down_XML_to_bytes("Up48_latLong.xml");
+	Data_link dlup48 = up_bytes_to_struct(bytes_up48, "Up48_latLong.xml");
+
 
 	cout << "\n";
 

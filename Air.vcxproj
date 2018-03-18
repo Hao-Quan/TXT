@@ -80,7 +80,9 @@
     <None Include="Up19.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Up46.xml" />
+    <None Include="Up46.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Myxml.h" />
