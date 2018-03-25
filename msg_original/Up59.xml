@@ -1,0 +1,71 @@
+<cpdlc-message flight-id="ABC321" direction="up">
+    <header>
+        <date>2018/03/12</date>
+        <time>22:36:43</time>
+    </header>
+    <msg-element id="59">
+        <position direction="to" role="current">
+            <fix name="FFFF">
+                <latLong>
+                    <latitude direction="south">
+                        <degrees units="magnetic" role="bearing">6</degrees>
+                        <minutes>66</minutes>
+                        <seconds>63</seconds>
+                    </latitude>
+                    <longitude direction="west">
+                        <degrees units="magnetic" role="bearing">7</degrees>
+                        <minutes>70</minutes>
+                        <seconds>72</seconds>
+                    </longitude>
+                </latLong>
+            </fix>
+            <!--
+			<navaid name="XXXXX">
+				<latLong>
+					<latitude direction="north">
+						<degrees units="magnetic" role="bearing">17</degrees>
+						<minutes>10</minutes> 
+						<seconds>12</seconds>
+					</latitude>
+					<longitude direction="west">
+						<degrees units="magnetic" role="bearing">21</degrees>
+						<minutes>22</minutes>
+						<seconds>28</seconds>
+					</longitude>
+				</latLong>
+			</navaid>
+			-->
+            <degrees units="magnetic" role="bearing">89</degrees>
+            <distance units="kilometres" atwTolerance="plus" specified="yes">
+				12	
+			</distance>
+            <!-- <airport role="departure">
+				MALPENSA
+			</airport> -->
+            <!--
+			<latLong>
+				<latitude direction="north">
+					<degrees units="magnetic" role="bearing">97</degrees>
+					<minutes>90</minutes> 
+					<seconds>92</seconds>
+				</latitude>
+				<longitude direction="west">
+					<degrees units="magnetic" role="bearing">81</degrees>
+					<minutes>82</minutes>
+					<seconds>88</seconds>
+				</longitude>
+			</latLong>
+			-->
+        </position>
+		
+		<time role="departure" tolerance="at">
+			16:12:45
+		</time>
+		
+		<level atwTolerance="at" type="current">
+            <leveldata units="flightLevel" role="waypoint">300</leveldata>
+            <leveldata units="metres" role="current">560</leveldata>
+        </level>
+       
+    </msg-element>
+</cpdlc-message>
