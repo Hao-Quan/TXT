@@ -63,15 +63,80 @@ int main(){
 	*****************************************************************************/
 
 
-	vector<string> bytes_up46 = down_XML_to_bytes("Up46_airport.xml");
-	Data_link dlup46 = up_bytes_to_struct(bytes_up46, "Up46_airport.xml");
+	//vector<string> bytes_up46 = down_XML_to_bytes("Up46_airport.xml");
+	//Data_link dlup46 = up_bytes_to_struct(bytes_up46, "Up46_airport.xml");
 
-	vector<string> bytes_up47 = down_XML_to_bytes("Up47.xml");
+	/*vector<string> bytes_up47 = down_XML_to_bytes("Up47.xml");
 	Data_link dlup47 = up_bytes_to_struct(bytes_up47, "Up47.xml");
 
 	vector<string> bytes_up48 = down_XML_to_bytes("Up48_latLong.xml");
-	Data_link dlup48 = up_bytes_to_struct(bytes_up48, "Up48_latLong.xml");
+	Data_link dlup48 = up_bytes_to_struct(bytes_up48, "Up48_latLong.xml");*/
 
+	/****************************************************************************
+	*		UP: Byte Data to  STRUCTURE											*
+	*		Msg up0 - up84														*
+	*																			*
+	*	Input: HEX DataBytes "up"	(file stored in directory "msg_original")	*
+	*	Output: Structure (file stored in the directory "msg_generated")		*
+	*																			*
+	*	Release Date: 25-03-2018												*
+	*****************************************************************************/
+	vector<string> bytes_up0 = down_XML_to_bytes("Up0.xml");
+	Data_link dlup0 = up_bytes_to_struct(bytes_up0, "Up0.xml");
+
+	vector<string> bytes_up1 = down_XML_to_bytes("Up1.xml");
+	Data_link dlup1 = up_bytes_to_struct(bytes_up1, "Up1.xml");
+
+	vector<string> bytes_up2 = down_XML_to_bytes("Up2.xml");
+	Data_link dlup2 = up_bytes_to_struct(bytes_up2, "Up2.xml");
+
+	vector<string> bytes_up51 = down_XML_to_bytes("Up51.xml");
+	Data_link dlup51 = up_bytes_to_struct(bytes_up51, "Up51.xml");
+
+	vector<string> bytes_up52 = down_XML_to_bytes("Up52.xml");
+	Data_link dlup52 = up_bytes_to_struct(bytes_up52, "Up52.xml");
+
+	vector<string> bytes_up53 = down_XML_to_bytes("Up53.xml");
+	Data_link dlup53 = up_bytes_to_struct(bytes_up53, "Up53.xml");
+
+	vector<string> bytes_up55 = down_XML_to_bytes("Up55.xml");
+	Data_link dlup55 = up_bytes_to_struct(bytes_up55, "Up55.xml");
+
+	vector<string> bytes_up56 = down_XML_to_bytes("Up56.xml");
+	Data_link dlup56 = up_bytes_to_struct(bytes_up56, "Up56.xml");
+
+	vector<string> bytes_up57 = down_XML_to_bytes("Up57.xml");
+	Data_link dlup57 = up_bytes_to_struct(bytes_up57, "Up57.xml");
+
+	vector<string> bytes_up58 = down_XML_to_bytes("Up58.xml");
+	Data_link dlup58 = up_bytes_to_struct(bytes_up58, "Up58.xml");
+
+	vector<string> bytes_up59 = down_XML_to_bytes("Up59.xml");
+	Data_link dlup59 = up_bytes_to_struct(bytes_up59, "Up59.xml");
+
+	vector<string> bytes_up60 = down_XML_to_bytes("Up60.xml");
+	Data_link dlup60 = up_bytes_to_struct(bytes_up60, "Up60.xml");
+
+	vector<string> bytes_up61 = down_XML_to_bytes("Up61.xml");
+	Data_link dlup61 = up_bytes_to_struct(bytes_up61, "Up61.xml");
+
+	vector<string> bytes_up63 = down_XML_to_bytes("Up63.xml");
+	Data_link dlup63 = up_bytes_to_struct(bytes_up63, "Up63.xml");
+
+	vector<string> bytes_up79 = down_XML_to_bytes("Up79.xml");
+	Data_link dlup79 = up_bytes_to_struct(bytes_up79, "Up79.xml");
+
+	vector<string> bytes_up80 = down_XML_to_bytes("Up80.xml");
+	Data_link dlup80 = up_bytes_to_struct(bytes_up80, "Up80.xml");
+
+	vector<string> bytes_up81 = down_XML_to_bytes("Up81.xml");
+	Data_link dlup81 = up_bytes_to_struct(bytes_up81, "Up81.xml");
+
+	vector<string> bytes_up82 = down_XML_to_bytes("Up82.xml");
+	Data_link dlup82 = up_bytes_to_struct(bytes_up82, "Up82.xml");
+
+	vector<string> bytes_up84 = down_XML_to_bytes("Up84.xml");
+	Data_link dlup84 = up_bytes_to_struct(bytes_up84, "Up84.xml");
 
 	cout << "\n";
 
