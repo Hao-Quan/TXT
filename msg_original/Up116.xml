@@ -3,9 +3,6 @@
         <date>2018/03/12</date>
         <time>22:36:43</time>
     </header>
-    <msg-element id="106">
-        <speed units="trueMetric" use="high">
-			245
-		</speed>
-    </msg-element>
+    <msg-element id="116"/>
+       
 </cpdlc-message>

@@ -1266,8 +1266,8 @@ Data_link	up_XML_to_struct(string xml_filename) {
 		if (!data_link.msg_element_id.compare("106") || !data_link.msg_element_id.compare("108") || !data_link.msg_element_id.compare("109") || !data_link.msg_element_id.compare("110")) {
 			data_link = up_106_108_109_110_speed(i, data_link);
 		}
-		
-		if (!data_link.msg_element_id.compare("107") || !data_link.msg_element_id.compare("143") || !data_link.msg_element_id.compare("162") || !data_link.msg_element_id.compare("211") || 
+
+		if (!data_link.msg_element_id.compare("107") || !data_link.msg_element_id.compare("116") || !data_link.msg_element_id.compare("143") || !data_link.msg_element_id.compare("162") || !data_link.msg_element_id.compare("211") || 
 			!data_link.msg_element_id.compare("218") || !data_link.msg_element_id.compare("222") || !data_link.msg_element_id.compare("224") || !data_link.msg_element_id.compare("225") ||
 			!data_link.msg_element_id.compare("227") || !data_link.msg_element_id.compare("237") || !data_link.msg_element_id.compare("293") || !data_link.msg_element_id.compare("320")) {
 			data_link = up_unique(i, data_link);
