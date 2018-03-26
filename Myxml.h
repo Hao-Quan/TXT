@@ -141,6 +141,18 @@ typedef struct Data_link {
 	string param39;
 	string param40;
 	string param41;
+	string param42;
+	string param43;
+	string param44;
+	string param45;
+	string param46;
+	string param47;
+	string param48;
+	string param49;
+	string param50;
+	string param51;
+
+
 
 	string value1;	// "flight_id: AAL123"
 	string value2;	// "date: 2002/03/29"
@@ -183,6 +195,17 @@ typedef struct Data_link {
 	string value39;
 	string value40;
 	string value41;
+	string value42;
+	string value43;
+	string value44;
+	string value45;
+	string value46;
+	string value47;
+	string value48;
+	string value49;
+	string value50;
+	string value51;
+
 
 
 } Data_link;

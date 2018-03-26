@@ -765,6 +765,7 @@ Data_link up_61_position_level_speed(XMLElement *i, Data_link data_link) {
 
 Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 	int time_flag = 0;
+	int count = 1;
 	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
 			const char *element_name_sub = item->Name();
 
@@ -779,9 +780,7 @@ Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 			*		time			 *
 			*************************/
 					
-			if (!strcmp(element_name_sub, "time") && time_flag == 0) {
-				time_flag = 1;
-						
+			if (!strcmp(element_name_sub, "time") && time_flag == 0) {										
 				XMLElement *time_element = item;
 				data_link.param34 = "time";
 				data_link.value34 = time_element->GetText();
@@ -795,9 +794,10 @@ Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 					data_link.param36 = "tolerance";
 					data_link.value36 = time_element->Attribute("tolerance");
 				}
+				time_flag = 1;
 			}
 
-			if (!strcmp(element_name_sub, "time") && time_flag == 1) {
+			if (!strcmp(element_name_sub, "time") && time_flag == 1 && count == 3) {
 				XMLElement *time_element = item;
 				data_link.param37 = "time";
 				data_link.value37 = time_element->GetText();
@@ -812,7 +812,8 @@ Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 					data_link.value39 = time_element->Attribute("tolerance");
 				}
 			}
-
+			count++;
+			
 			/*************************
 			*		level			 *
 			*************************/
@@ -1027,6 +1028,48 @@ Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 	return data_link;
 }
 
+ Data_link up_106_108_109_110_speed(XMLElement *i, Data_link data_link) {
+	int speed_flag = 0;
+	int count = 1;
+
+	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
+		const char *element_name_sub = item->Name();
+
+		/*************************
+		*		speed			 *
+		*************************/
+		if (!strcmp(element_name_sub, "speed") && speed_flag == 0) {
+			speed_flag = 1; 
+			data_link.param7 = "speed";
+			data_link.value7 = item->GetText();
+
+			data_link.param8 = "units";
+			data_link.value8 = item->Attribute("units");
+					
+			if (item->Attribute("use")) { 
+				data_link.param9 = "use";
+				data_link.value9 = item->Attribute("use");
+			}
+			
+		}
+
+		if (!strcmp(element_name_sub, "speed") && speed_flag == 1 && count == 2) {
+			data_link.param10 = "speed";
+			data_link.value10 = item->GetText();
+
+			data_link.param11 = "units";
+			data_link.value11 = item->Attribute("units");
+					
+			if (item->Attribute("use")) { 
+				data_link.param12 = "use";
+				data_link.value12 = item->Attribute("use");
+			}
+		}
+		count++;
+	}
+	return data_link;
+ }
+
 
 Data_link	up_XML_to_struct(string xml_filename) {
 	Data_link data_link;
@@ -1078,6 +1121,12 @@ Data_link	up_XML_to_struct(string xml_filename) {
 	data_link.param43 = "empty";
 	data_link.param44 = "empty";
 	data_link.param45 = "empty";
+	data_link.param46 = "empty";
+	data_link.param47 = "empty";
+	data_link.param48 = "empty";
+	data_link.param49 = "empty";
+	data_link.param50 = "empty";
+	data_link.param51 = "empty";
 
 
 
@@ -1126,7 +1175,12 @@ Data_link	up_XML_to_struct(string xml_filename) {
 	data_link.value43 = "empty";
 	data_link.value44 = "empty";
 	data_link.value45 = "empty";
-
+	data_link.value46 = "empty";
+	data_link.value47 = "empty";
+	data_link.value48 = "empty";
+	data_link.value49 = "empty";
+	data_link.value50 = "empty";
+	data_link.value51 = "empty";
 
 	XMLDocument xmlDoc;
 	char file_path[100];
@@ -1208,6 +1262,17 @@ Data_link	up_XML_to_struct(string xml_filename) {
 		if (!data_link.msg_element_id.compare("84")) {
 			data_link = up_84_position_procedure(i, data_link);
 		}
+
+		if (!data_link.msg_element_id.compare("106") || !data_link.msg_element_id.compare("108") || !data_link.msg_element_id.compare("109") || !data_link.msg_element_id.compare("110")) {
+			data_link = up_106_108_109_110_speed(i, data_link);
+		}
+		
+		if (!data_link.msg_element_id.compare("107") || !data_link.msg_element_id.compare("143") || !data_link.msg_element_id.compare("162") || !data_link.msg_element_id.compare("211") || 
+			!data_link.msg_element_id.compare("218") || !data_link.msg_element_id.compare("222") || !data_link.msg_element_id.compare("224") || !data_link.msg_element_id.compare("225") ||
+			!data_link.msg_element_id.compare("227") || !data_link.msg_element_id.compare("237") || !data_link.msg_element_id.compare("293") || !data_link.msg_element_id.compare("320")) {
+			data_link = up_unique(i, data_link);
+		}
+
 	}
 	
 	return  data_link;

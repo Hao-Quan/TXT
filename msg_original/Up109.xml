@@ -1,0 +1,12 @@
+<cpdlc-message flight-id="ABC321" direction="up">
+    <header>
+        <date>2018/03/12</date>
+        <time>22:36:43</time>
+    </header>
+    <msg-element id="109">
+		<speed units="trueMetric" use="high">
+			245
+		</speed>
+       
+    </msg-element>
+</cpdlc-message>

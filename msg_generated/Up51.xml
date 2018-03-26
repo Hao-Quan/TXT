@@ -3,7 +3,7 @@
         <date>2018/03/12</date>
         <time>22:36:43</time>
     </header>
-    <msg-element id="51">
+    <msg-element id="47">
         <position direction="to" role="current">
             <fix name="FFFF">
                 <latLong>
@@ -57,8 +57,9 @@
 			</latLong>
 			-->
         </position>
-        <time role="departure" tolerance="at">
-			20:12:45
-		</time>
+        <level atwTolerance="at" type="current">
+            <leveldata units="flightLevel" role="waypoint">300</leveldata>
+            <leveldata units="metres" role="current">560</leveldata>
+        </level>
     </msg-element>
 </cpdlc-message>
