@@ -3,7 +3,7 @@
         <date>2002/03/29</date>
         <time>10:59:33</time>
     </header>
-    <msg-element id="65">
-		<reason> weather </reason>
+    <msg-element id="98">
+		<freetext>buonasera</freetext>
 	</msg-element>	
 </cpdlc-message>

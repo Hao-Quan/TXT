@@ -14,8 +14,121 @@ using namespace tinyxml2;
 #define XMLCheckResult(a_eResult) if (a_eResult != XML_SUCCESS) { printf("Error: %i\n", a_eResult);}
 #endif
 
+//Data_link header_xml()
+
 void down_struct_to_XML(Data_link datalink) {
 	XMLDocument xmlDoc;
+
+	/*****************************************
+	*		down msg unique					 *
+	*****************************************/
+
+	if (!datalink.msg_element_id.compare("0") || !datalink.msg_element_id.compare("1") || !datalink.msg_element_id.compare("2")
+		|| !datalink.msg_element_id.compare("177") || !datalink.msg_element_id.compare("211") || !datalink.msg_element_id.compare("218")
+		|| !datalink.msg_element_id.compare("227") || !datalink.msg_element_id.compare("237")){
+		string flight_id = datalink.value1;
+		string direction = datalink.value2;
+		string date = datalink.value3;
+		string time = datalink.value4;
+
+		
+		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
+		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
+		cpdlc_message_item->SetAttribute("direction", "down");
+		xmlDoc.InsertFirstChild(cpdlc_message_item);
+
+		//Header 
+		XMLElement *header_item = xmlDoc.NewElement("header"); 
+		XMLElement *date_item = xmlDoc.NewElement("date");
+		date_item->SetText(date.c_str());
+		XMLElement *time_item = xmlDoc.NewElement("time");
+		time_item->SetText(time.c_str());
+
+		cpdlc_message_item->InsertEndChild(header_item);
+		header_item->InsertEndChild(date_item);
+		header_item->InsertEndChild(time_item);
+
+		// msg-element
+		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
+		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
+		cpdlc_message_item->InsertEndChild(msg_element_item);
+	}
+
+	/*****************************************
+	*		down 23							 *
+	*****************************************/
+
+	if (!datalink.msg_element_id.compare("23")){
+		string flight_id = datalink.value1;
+		string direction = datalink.value2;
+		string date = datalink.value3;
+		string time = datalink.value4;
+
+		
+		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
+		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
+		cpdlc_message_item->SetAttribute("direction", "down");
+		xmlDoc.InsertFirstChild(cpdlc_message_item);
+
+		//Header 
+		XMLElement *header_item = xmlDoc.NewElement("header"); 
+		XMLElement *date_item = xmlDoc.NewElement("date");
+		date_item->SetText(date.c_str());
+		XMLElement *time_item = xmlDoc.NewElement("time");
+		time_item->SetText(time.c_str());
+
+		cpdlc_message_item->InsertEndChild(header_item);
+		header_item->InsertEndChild(date_item);
+		header_item->InsertEndChild(time_item);
+
+		// msg-element
+		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
+		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
+		cpdlc_message_item->InsertEndChild(msg_element_item);
+
+		XMLElement *namedinstruction_item = xmlDoc.NewElement("namedinstruction");
+		namedinstruction_item->SetText(datalink.value7.c_str());
+		msg_element_item->InsertEndChild(namedinstruction_item);
+	}
+
+	/*****************************************
+	*		down 62							 *
+	*****************************************/
+
+	if (!datalink.msg_element_id.compare("62")){
+		string flight_id = datalink.value1;
+		string direction = datalink.value2;
+		string date = datalink.value3;
+		string time = datalink.value4;
+
+		
+		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
+		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
+		cpdlc_message_item->SetAttribute("direction", "down");
+		xmlDoc.InsertFirstChild(cpdlc_message_item);
+
+		//Header 
+		XMLElement *header_item = xmlDoc.NewElement("header"); 
+		XMLElement *date_item = xmlDoc.NewElement("date");
+		date_item->SetText(date.c_str());
+		XMLElement *time_item = xmlDoc.NewElement("time");
+		time_item->SetText(time.c_str());
+
+		cpdlc_message_item->InsertEndChild(header_item);
+		header_item->InsertEndChild(date_item);
+		header_item->InsertEndChild(time_item);
+
+		// msg-element
+		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
+		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
+		cpdlc_message_item->InsertEndChild(msg_element_item);
+
+		XMLElement *namedinstruction_item = xmlDoc.NewElement("errorInformation");
+		namedinstruction_item->SetText(datalink.value7.c_str());
+		msg_element_item->InsertEndChild(namedinstruction_item);
+	}
+
+
 
 	/*****************************************
 	*		down 65: Due to weather			 *
@@ -47,14 +160,113 @@ void down_struct_to_XML(Data_link datalink) {
 		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
 		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
 		cpdlc_message_item->InsertEndChild(msg_element_item);
+
+		XMLElement *reason_item = xmlDoc.NewElement("reason");
+		reason_item->SetText(datalink.value7.c_str());
+		msg_element_item->InsertEndChild(reason_item);
+	
+	}
+
+	/*****************************************
+	*		down 97-98: Freetext			 *
+	*****************************************/
+
+	if (!datalink.msg_element_id.compare("97") || !datalink.msg_element_id.compare("98")) {
+		string flight_id = datalink.value1;
+		string date = datalink.value2;
+		string time = datalink.value3;
+
+		
+		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
+		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
+		cpdlc_message_item->SetAttribute("direction", "down");
+		xmlDoc.InsertFirstChild(cpdlc_message_item);
+
+		//Header 
+		XMLElement *header_item = xmlDoc.NewElement("header"); 
+		XMLElement *date_item = xmlDoc.NewElement("date");
+		date_item->SetText(date.c_str());
+		XMLElement *time_item = xmlDoc.NewElement("time");
+		time_item->SetText(time.c_str());
+
+		cpdlc_message_item->InsertEndChild(header_item);
+		header_item->InsertEndChild(date_item);
+		header_item->InsertEndChild(time_item);
+
+		// msg-element
+		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
+		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
+		cpdlc_message_item->InsertEndChild(msg_element_item);
+
+		XMLElement *freetext_item = xmlDoc.NewElement("freetext");
+		freetext_item->SetText(datalink.value7.c_str());
+		msg_element_item->InsertEndChild(freetext_item);
 	
 	}
 	
 
-	// Save XML file to disk
+	/*****************************************
+	*		down 139-140: Speed				 *
+	*****************************************/
+
+	if (!datalink.msg_element_id.compare("139") || !datalink.msg_element_id.compare("140")) {
+		string flight_id = datalink.value1;
+		string date = datalink.value2;
+		string time = datalink.value3;
+
+		
+		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
+		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
+		cpdlc_message_item->SetAttribute("direction", "down");
+		xmlDoc.InsertFirstChild(cpdlc_message_item);
+
+		//Header 
+		XMLElement *header_item = xmlDoc.NewElement("header"); 
+		XMLElement *date_item = xmlDoc.NewElement("date");
+		date_item->SetText(date.c_str());
+		XMLElement *time_item = xmlDoc.NewElement("time");
+		time_item->SetText(time.c_str());
+
+		cpdlc_message_item->InsertEndChild(header_item);
+		header_item->InsertEndChild(date_item);
+		header_item->InsertEndChild(time_item);
+
+		// msg-element
+		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
+		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
+		cpdlc_message_item->InsertEndChild(msg_element_item);
+
+		// speed
+		XMLElement *speed_item = xmlDoc.NewElement("speed");
+		speed_item->SetText(datalink.value7.c_str());
+		speed_item->SetAttribute("units", datalink.value8.c_str());
+		speed_item->SetAttribute("use", datalink.value9.c_str());
+		msg_element_item->InsertEndChild(speed_item);
+	
+	}
+
+	/*XMLDocument xmlDoc;
+	char file_path[100];
+	char *path_dir = "msg_original/";
+	const char *filename_ch = xml_filename.c_str();
+	strcpy_s(file_path, path_dir);
+	strcat_s(file_path, sizeof file_path, filename_ch);
+	XMLError eResult = xmlDoc.LoadFile(file_path);
+	XMLCheckResult(eResult);*/
+
+	char file_path[100];
+	char *path_dir = "msg_generated_down/";
 	string filename = "Down" + datalink.msg_element_id + ".xml";
-	XMLError eResult = xmlDoc.SaveFile(filename.c_str());
+	const char *filename_ch = filename.c_str();
+	strcpy_s(file_path, path_dir);
+	strcat_s(file_path, sizeof file_path, filename_ch);
+	XMLError eResult = xmlDoc.SaveFile(file_path);
 	XMLCheckResult(eResult);
+
+	// Save XML file to disk
+	//string filename = "Down" + datalink.msg_element_id + ".xml";
+	//XMLError eResult = xmlDoc.SaveFile(filename.c_str());
+	//XMLCheckResult(eResult);
 	/*cout << "*** Down_struct_to_XML: Down" + datalink.msg_element_id + ".xml";
 	cout << "\n" + filename + " is written in the disk successfully.\n";*/
 
@@ -423,6 +635,22 @@ Data_link up_unique(XMLElement *item, Data_link data_link) {
 	return data_link;
 }
 
+Data_link up_23_namedinstruction(XMLElement *i, Data_link data_link) {
+	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
+				const char *element_name_sub = item->Name();
+
+					/*************************
+					*		namedinstruction *
+					*************************/
+					if (!strcmp(element_name_sub, "namedinstruction")) {
+						XMLElement *namedinstruction_element = item;
+						data_link.param7 = "namedinstruction";
+						data_link.value7 = namedinstruction_element->GetText();
+					}
+	}
+	return data_link;
+}
+
 Data_link up_46_47_48_position_level(XMLElement *i, Data_link data_link) {
 	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
 				const char *element_name_sub = item->Name();
@@ -540,7 +768,7 @@ Data_link up_51_52_53_54_position_time(XMLElement *i, Data_link data_link){
 	return data_link;
 }
 
-Data_link up_55_56_57_positon_speed(XMLElement *i, Data_link data_link) {
+Data_link up_55_56_57_188_positon_speed(XMLElement *i, Data_link data_link) {
 	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
 				const char *element_name_sub = item->Name();
 
@@ -762,6 +990,22 @@ Data_link up_61_position_level_speed(XMLElement *i, Data_link data_link) {
 	}
 	return data_link;
 }
+
+Data_link down_65_reason(XMLElement *i, Data_link data_link) {
+	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
+		const char *element_name_sub = item->Name();
+		/*****************************************
+		*		Due to reason					 *
+		******************************************/
+		if (!strcmp(element_name_sub, "reason")) {
+			XMLElement *reason_element = item;
+			data_link.param7 = "reason";
+			data_link.value7 = reason_element->GetText();
+
+		}
+	}
+	 return data_link;
+ }
 
 Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 	int time_flag = 0;
@@ -1028,7 +1272,23 @@ Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 	return data_link;
 }
 
- Data_link up_106_108_109_110_speed(XMLElement *i, Data_link data_link) {
+ Data_link down_97_98_freetext(XMLElement *i, Data_link data_link) {
+	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
+		const char *element_name_sub = item->Name();
+		/*****************************************
+		*		freetext						 *
+		******************************************/
+		if (!strcmp(element_name_sub, "freetext")) {
+			XMLElement *freetext_element = item;
+			data_link.param7 = "freetext";
+			data_link.value7 = freetext_element->GetText();
+
+		}
+	}
+	 return data_link;
+ }
+
+ Data_link up_106_108_109_110_288_289_290_291_292_speed(XMLElement *i, Data_link data_link) {
 	int speed_flag = 0;
 	int count = 1;
 
@@ -1070,6 +1330,173 @@ Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 	return data_link;
  }
 
+ Data_link down_139_140_speed(XMLElement *i, Data_link data_link) {
+	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
+				const char *element_name_sub = item->Name();
+
+				/*************************
+				*		speed			 *
+				*************************/
+
+				if (!strcmp(element_name_sub, "speed")) {
+					data_link.param7 = "speed";
+					data_link.value7 = item->GetText();
+
+					
+					data_link.param8 = "units";
+					data_link.value8 = item->Attribute("units");
+					
+
+					if (item->Attribute("use")) { 
+						data_link.param9 = "use";
+						data_link.value9 = item->Attribute("use");
+					}
+				}
+
+	}
+	return data_link;
+}
+
+ Data_link up_159_errorInformation(XMLElement *i, Data_link data_link) {
+	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
+		const char *element_name_sub = item->Name();
+		/*****************************************
+		*		errorInformation				 *
+		******************************************/
+		if (!strcmp(element_name_sub, "errorInformation")) {
+			XMLElement *errorInformation_element = item;
+			data_link.param7 = "errorInformation";
+			data_link.value7 = errorInformation_element->GetText();
+
+		}
+	}
+	 return data_link;
+ }
+
+ Data_link up_169_183_187_freetext(XMLElement *i, Data_link data_link) {
+	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
+		const char *element_name_sub = item->Name();
+		/*****************************************
+		*		freetext				 *
+		******************************************/
+		if (!strcmp(element_name_sub, "freetext")) {
+			XMLElement *freetext_element = item;
+			data_link.param7 = "freetext";
+			data_link.value7 = freetext_element->GetText();
+
+		}
+	}
+	 return data_link;
+ 
+ }
+
+ Data_link up_249_revisionreason(XMLElement *i, Data_link data_link) {
+	 int count = 1;
+
+	 for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
+		const char *element_name_sub = item->Name();
+		/*****************************************
+		*		revisionreason					 *
+		******************************************/
+		if (!strcmp(element_name_sub, "revisionreason") && count == 1) {
+			XMLElement *revisionreason_element = item;
+			data_link.param7 = "revisionreason";
+			data_link.value7 = revisionreason_element->GetText();
+			count++;
+		}
+		else {
+			XMLElement *revisionreason_element = item;
+			data_link.param8 = "revisionreason";
+			data_link.value8 = revisionreason_element->GetText();
+		}
+	}
+	 return data_link;
+ 
+ }
+
+ Data_link up_265_340_341_position(XMLElement *i, Data_link data_link) {
+	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
+		const char *element_name_sub = item->Name();
+
+		/*************************
+		*		position		 *
+		*************************/
+		if (!strcmp(element_name_sub, "position"))
+			data_link = struct_position(item, data_link);
+	}
+	return data_link;
+}
+
+ Data_link up_322_323_324_position_time_speed(XMLElement *i, Data_link data_link) {
+	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
+				const char *element_name_sub = item->Name();
+				/*************************
+				*		position		 *
+				*************************/
+
+				if (!strcmp(element_name_sub, "position"))
+					data_link = struct_position(item, data_link);
+
+				/*************************
+				*		time			 *
+				*************************/
+					
+				if (!strcmp(element_name_sub, "time")) {						
+					XMLElement *time_element = item;
+					data_link.param34 = "time";
+					data_link.value34 = time_element->GetText();
+
+					if (time_element->Attribute("role")) {
+						data_link.param35 = "role";
+						data_link.value35 = time_element->Attribute("role");
+					}
+
+					if (time_element->Attribute("tolerance")) {
+						data_link.param36 = "tolerance";
+						data_link.value36 = time_element->Attribute("tolerance");
+					}
+				}	
+
+				/*************************
+				*		speed			 *
+				*************************/
+
+				if (!strcmp(element_name_sub, "speed")) {
+					data_link.param37 = "speed";
+					data_link.value37 = item->GetText();
+
+					
+					data_link.param38 = "units";
+					data_link.value38 = item->Attribute("units");
+					
+
+					if (item->Attribute("use")) { 
+						data_link.param39 = "use";
+						data_link.value39 = item->Attribute("use");
+					}
+				}
+
+
+		}
+	return data_link;
+
+ }
+
+ Data_link up_62_errorInformation(XMLElement *i, Data_link data_link) {
+	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
+		const char *element_name_sub = item->Name();
+		/*****************************************
+		*		errorInformation				 *
+		******************************************/
+		if (!strcmp(element_name_sub, "errorInformation")) {
+			XMLElement *errorInformation_element = item;
+			data_link.param7 = "errorInformation";
+			data_link.value7 = errorInformation_element->GetText();
+
+		}
+	}
+	 return data_link;
+ }
 
 Data_link	up_XML_to_struct(string xml_filename) {
 	Data_link data_link;
@@ -1220,6 +1647,9 @@ Data_link	up_XML_to_struct(string xml_filename) {
 		if (!data_link.msg_element_id.compare("0") || !data_link.msg_element_id.compare("1") || !data_link.msg_element_id.compare("2")) {
 			data_link = up_unique(i, data_link);
 		}
+		if (!data_link.msg_element_id.compare("23")){
+			data_link = up_23_namedinstruction(i, data_link);
+		}	
 
 		int time_flag = 0;
 		if (!data_link.msg_element_id.compare("46") || !data_link.msg_element_id.compare("47") || !data_link.msg_element_id.compare("48")) {
@@ -1228,8 +1658,8 @@ Data_link	up_XML_to_struct(string xml_filename) {
 		if (!data_link.msg_element_id.compare("51") || !data_link.msg_element_id.compare("52") || !data_link.msg_element_id.compare("53") || !data_link.msg_element_id.compare("54")) {
 			data_link = up_51_52_53_54_position_time(i, data_link);
 		}
-		if (!data_link.msg_element_id.compare("55") || !data_link.msg_element_id.compare("56") || !data_link.msg_element_id.compare("57")) {
-			data_link = up_55_56_57_positon_speed(i, data_link);
+		if (!data_link.msg_element_id.compare("55") || !data_link.msg_element_id.compare("56") || !data_link.msg_element_id.compare("57") || !data_link.msg_element_id.compare("188")) {
+			data_link = up_55_56_57_188_positon_speed(i, data_link);
 		}
 		if (!data_link.msg_element_id.compare("58") || !data_link.msg_element_id.compare("59") || !data_link.msg_element_id.compare("60")) {
 			data_link = up_58_59_60_positon_time_level(i, data_link);
@@ -1239,8 +1669,18 @@ Data_link	up_XML_to_struct(string xml_filename) {
 			data_link = up_61_position_level_speed(i, data_link);
 		}
 
+		if (!data_link.msg_element_id.compare("62")) {
+			data_link = up_62_errorInformation(i, data_link);
+		}
+
+
 		if (!data_link.msg_element_id.compare("63")) {
 			data_link = up_63_position_time_level_speed(i, data_link);
+		}
+
+		
+		if (!data_link.msg_element_id.compare("65")) {
+			data_link = down_65_reason(i, data_link);
 		}
 
 		if (!data_link.msg_element_id.compare("79")) {
@@ -1262,11 +1702,44 @@ Data_link	up_XML_to_struct(string xml_filename) {
 		if (!data_link.msg_element_id.compare("84")) {
 			data_link = up_84_position_procedure(i, data_link);
 		}
-
-		if (!data_link.msg_element_id.compare("106") || !data_link.msg_element_id.compare("108") || !data_link.msg_element_id.compare("109") || !data_link.msg_element_id.compare("110")) {
-			data_link = up_106_108_109_110_speed(i, data_link);
+		
+		if (!data_link.msg_element_id.compare("97") || !data_link.msg_element_id.compare("98")) {
+			data_link = down_97_98_freetext(i, data_link);
 		}
 
+		if (!data_link.msg_element_id.compare("139") || !data_link.msg_element_id.compare("140")) {
+			data_link = down_139_140_speed(i, data_link);
+		}
+		
+
+		if (!data_link.msg_element_id.compare("106") || !data_link.msg_element_id.compare("108") || !data_link.msg_element_id.compare("109") || !data_link.msg_element_id.compare("110") 
+			|| !data_link.msg_element_id.compare("288") || !data_link.msg_element_id.compare("289") || !data_link.msg_element_id.compare("290") || !data_link.msg_element_id.compare("291")
+			|| !data_link.msg_element_id.compare("292")) {
+			data_link = up_106_108_109_110_288_289_290_291_292_speed(i, data_link);
+		}
+
+		if (!data_link.msg_element_id.compare("159")) {
+			data_link = up_159_errorInformation(i, data_link);
+		}
+
+
+		if (!data_link.msg_element_id.compare("169") || !data_link.msg_element_id.compare("183") || !data_link.msg_element_id.compare("187")) {
+			data_link = up_169_183_187_freetext(i, data_link);
+		}
+
+		if (!data_link.msg_element_id.compare("249")) {
+			data_link = up_249_revisionreason(i, data_link);
+		}
+
+		if (!data_link.msg_element_id.compare("265") || !data_link.msg_element_id.compare("340") || !data_link.msg_element_id.compare("341")) {
+			data_link = up_265_340_341_position(i, data_link);
+		}
+		
+		if (!data_link.msg_element_id.compare("322") || !data_link.msg_element_id.compare("323") || !data_link.msg_element_id.compare("324")) {
+			data_link = up_322_323_324_position_time_speed(i, data_link);
+		} 
+
+			
 		if (!data_link.msg_element_id.compare("107") || !data_link.msg_element_id.compare("116") || !data_link.msg_element_id.compare("143") || !data_link.msg_element_id.compare("162") || !data_link.msg_element_id.compare("211") || 
 			!data_link.msg_element_id.compare("218") || !data_link.msg_element_id.compare("222") || !data_link.msg_element_id.compare("224") || !data_link.msg_element_id.compare("225") ||
 			!data_link.msg_element_id.compare("227") || !data_link.msg_element_id.compare("237") || !data_link.msg_element_id.compare("293") || !data_link.msg_element_id.compare("320")) {
@@ -1327,7 +1800,7 @@ void	up_bytes_to_XML(vector<string> vector_databytes, string xml_filename) {
 	char to_write;
 
 	char file_path[100];
-	char *path_dir = "msg_generated/";
+	char *path_dir = "msg_generated_up/";
 	const char *filename_ch = xml_filename.c_str();
 	strcpy_s(file_path, path_dir);
 	strcat_s(file_path, sizeof file_path, filename_ch);
