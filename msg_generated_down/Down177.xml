@@ -1,7 +1,0 @@
-<cpdlc-message flight-id="ABC321" direction="down">
-    <header>
-        <date>2018/03/12</date>
-        <time>22:36:43</time>
-    </header>
-    <msg-element id="177"/>
-</cpdlc-message>

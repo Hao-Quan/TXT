@@ -3,7 +3,7 @@
         <date>2018/03/12</date>
         <time>22:36:43</time>
     </header>
-    <msg-element id="341">
+    <msg-element id="53">
         <position direction="to" role="current">
             <fix name="FFFF">
                 <latLong>
@@ -57,5 +57,13 @@
 			</latLong>
 			-->
         </position>
+        <time role="expiry" tolerance="at">
+			13:32:45
+		</time>
+		
+		<time role="departure" tolerance="atOrBefore">
+			13:32:45
+		</time>
+		
     </msg-element>
 </cpdlc-message>

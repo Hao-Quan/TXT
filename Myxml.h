@@ -151,7 +151,15 @@ typedef struct Data_link {
 	string param49;
 	string param50;
 	string param51;
-
+	string param52;
+	string param53;
+	string param54;
+	string param55;
+	string param56;
+	string param57;
+	string param58;
+	string param59;
+	string param60;
 
 
 	string value1;	// "flight_id: AAL123"
@@ -205,7 +213,15 @@ typedef struct Data_link {
 	string value49;
 	string value50;
 	string value51;
-
+	string value52;
+	string value53;
+	string value54;
+	string value55;
+	string value56;
+	string value57;
+	string value58;
+	string value59;
+	string value60;
 
 
 } Data_link;
@@ -266,5 +282,7 @@ Data_link	up_bytes_to_struct(vector<string> vector_databytes, string xml_filenam
 **************************************************/
 
 vector<string> down_struct_to_bytes(Data_link datalink, string xml_filename);
+
+vector<string>	fake_down_XML_to_bytes(string xml_filename);
 
 #endif

@@ -14,265 +14,6 @@ using namespace tinyxml2;
 #define XMLCheckResult(a_eResult) if (a_eResult != XML_SUCCESS) { printf("Error: %i\n", a_eResult);}
 #endif
 
-//Data_link header_xml()
-
-void down_struct_to_XML(Data_link datalink) {
-	XMLDocument xmlDoc;
-
-	/*****************************************
-	*		down msg unique					 *
-	*****************************************/
-
-	if (!datalink.msg_element_id.compare("0") || !datalink.msg_element_id.compare("1") || !datalink.msg_element_id.compare("2")
-		|| !datalink.msg_element_id.compare("177") || !datalink.msg_element_id.compare("211") || !datalink.msg_element_id.compare("218")
-		|| !datalink.msg_element_id.compare("227") || !datalink.msg_element_id.compare("237")){
-		string flight_id = datalink.value1;
-		string direction = datalink.value2;
-		string date = datalink.value3;
-		string time = datalink.value4;
-
-		
-		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
-		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
-		cpdlc_message_item->SetAttribute("direction", "down");
-		xmlDoc.InsertFirstChild(cpdlc_message_item);
-
-		//Header 
-		XMLElement *header_item = xmlDoc.NewElement("header"); 
-		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
-		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
-
-		cpdlc_message_item->InsertEndChild(header_item);
-		header_item->InsertEndChild(date_item);
-		header_item->InsertEndChild(time_item);
-
-		// msg-element
-		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
-		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
-		cpdlc_message_item->InsertEndChild(msg_element_item);
-	}
-
-	/*****************************************
-	*		down 23							 *
-	*****************************************/
-
-	if (!datalink.msg_element_id.compare("23")){
-		string flight_id = datalink.value1;
-		string direction = datalink.value2;
-		string date = datalink.value3;
-		string time = datalink.value4;
-
-		
-		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
-		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
-		cpdlc_message_item->SetAttribute("direction", "down");
-		xmlDoc.InsertFirstChild(cpdlc_message_item);
-
-		//Header 
-		XMLElement *header_item = xmlDoc.NewElement("header"); 
-		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
-		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
-
-		cpdlc_message_item->InsertEndChild(header_item);
-		header_item->InsertEndChild(date_item);
-		header_item->InsertEndChild(time_item);
-
-		// msg-element
-		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
-		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
-		cpdlc_message_item->InsertEndChild(msg_element_item);
-
-		XMLElement *namedinstruction_item = xmlDoc.NewElement("namedinstruction");
-		namedinstruction_item->SetText(datalink.value7.c_str());
-		msg_element_item->InsertEndChild(namedinstruction_item);
-	}
-
-	/*****************************************
-	*		down 62							 *
-	*****************************************/
-
-	if (!datalink.msg_element_id.compare("62")){
-		string flight_id = datalink.value1;
-		string direction = datalink.value2;
-		string date = datalink.value3;
-		string time = datalink.value4;
-
-		
-		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
-		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
-		cpdlc_message_item->SetAttribute("direction", "down");
-		xmlDoc.InsertFirstChild(cpdlc_message_item);
-
-		//Header 
-		XMLElement *header_item = xmlDoc.NewElement("header"); 
-		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
-		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
-
-		cpdlc_message_item->InsertEndChild(header_item);
-		header_item->InsertEndChild(date_item);
-		header_item->InsertEndChild(time_item);
-
-		// msg-element
-		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
-		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
-		cpdlc_message_item->InsertEndChild(msg_element_item);
-
-		XMLElement *namedinstruction_item = xmlDoc.NewElement("errorInformation");
-		namedinstruction_item->SetText(datalink.value7.c_str());
-		msg_element_item->InsertEndChild(namedinstruction_item);
-	}
-
-
-
-	/*****************************************
-	*		down 65: Due to weather			 *
-	*****************************************/
-
-	if (!datalink.msg_element_id.compare("65")) {
-		string flight_id = datalink.value1;
-		string date = datalink.value2;
-		string time = datalink.value3;
-
-		
-		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
-		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
-		cpdlc_message_item->SetAttribute("direction", "down");
-		xmlDoc.InsertFirstChild(cpdlc_message_item);
-
-		//Header 
-		XMLElement *header_item = xmlDoc.NewElement("header"); 
-		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
-		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
-
-		cpdlc_message_item->InsertEndChild(header_item);
-		header_item->InsertEndChild(date_item);
-		header_item->InsertEndChild(time_item);
-
-		// msg-element
-		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
-		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
-		cpdlc_message_item->InsertEndChild(msg_element_item);
-
-		XMLElement *reason_item = xmlDoc.NewElement("reason");
-		reason_item->SetText(datalink.value7.c_str());
-		msg_element_item->InsertEndChild(reason_item);
-	
-	}
-
-	/*****************************************
-	*		down 97-98: Freetext			 *
-	*****************************************/
-
-	if (!datalink.msg_element_id.compare("97") || !datalink.msg_element_id.compare("98")) {
-		string flight_id = datalink.value1;
-		string date = datalink.value2;
-		string time = datalink.value3;
-
-		
-		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
-		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
-		cpdlc_message_item->SetAttribute("direction", "down");
-		xmlDoc.InsertFirstChild(cpdlc_message_item);
-
-		//Header 
-		XMLElement *header_item = xmlDoc.NewElement("header"); 
-		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
-		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
-
-		cpdlc_message_item->InsertEndChild(header_item);
-		header_item->InsertEndChild(date_item);
-		header_item->InsertEndChild(time_item);
-
-		// msg-element
-		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
-		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
-		cpdlc_message_item->InsertEndChild(msg_element_item);
-
-		XMLElement *freetext_item = xmlDoc.NewElement("freetext");
-		freetext_item->SetText(datalink.value7.c_str());
-		msg_element_item->InsertEndChild(freetext_item);
-	
-	}
-	
-
-	/*****************************************
-	*		down 139-140: Speed				 *
-	*****************************************/
-
-	if (!datalink.msg_element_id.compare("139") || !datalink.msg_element_id.compare("140")) {
-		string flight_id = datalink.value1;
-		string date = datalink.value2;
-		string time = datalink.value3;
-
-		
-		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
-		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
-		cpdlc_message_item->SetAttribute("direction", "down");
-		xmlDoc.InsertFirstChild(cpdlc_message_item);
-
-		//Header 
-		XMLElement *header_item = xmlDoc.NewElement("header"); 
-		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
-		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
-
-		cpdlc_message_item->InsertEndChild(header_item);
-		header_item->InsertEndChild(date_item);
-		header_item->InsertEndChild(time_item);
-
-		// msg-element
-		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
-		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
-		cpdlc_message_item->InsertEndChild(msg_element_item);
-
-		// speed
-		XMLElement *speed_item = xmlDoc.NewElement("speed");
-		speed_item->SetText(datalink.value7.c_str());
-		speed_item->SetAttribute("units", datalink.value8.c_str());
-		speed_item->SetAttribute("use", datalink.value9.c_str());
-		msg_element_item->InsertEndChild(speed_item);
-	
-	}
-
-	/*XMLDocument xmlDoc;
-	char file_path[100];
-	char *path_dir = "msg_original/";
-	const char *filename_ch = xml_filename.c_str();
-	strcpy_s(file_path, path_dir);
-	strcat_s(file_path, sizeof file_path, filename_ch);
-	XMLError eResult = xmlDoc.LoadFile(file_path);
-	XMLCheckResult(eResult);*/
-
-	char file_path[100];
-	char *path_dir = "msg_generated_down/";
-	string filename = "Down" + datalink.msg_element_id + ".xml";
-	const char *filename_ch = filename.c_str();
-	strcpy_s(file_path, path_dir);
-	strcat_s(file_path, sizeof file_path, filename_ch);
-	XMLError eResult = xmlDoc.SaveFile(file_path);
-	XMLCheckResult(eResult);
-
-	// Save XML file to disk
-	//string filename = "Down" + datalink.msg_element_id + ".xml";
-	//XMLError eResult = xmlDoc.SaveFile(filename.c_str());
-	//XMLCheckResult(eResult);
-	/*cout << "*** Down_struct_to_XML: Down" + datalink.msg_element_id + ".xml";
-	cout << "\n" + filename + " is written in the disk successfully.\n";*/
-
-
-}
-
 Data_link struct_header(XMLElement *i, Data_link data_link){
 	const char *msg_element_id;
 	const char *element_name = i->Name();
@@ -367,83 +108,83 @@ Data_link struct_position(XMLElement *item, Data_link data_link) {
 			const char *latLong_longitude_seconds;
 
 			latLong_element = item->FirstChildElement("latLong");
-			data_link.param10 = "latLong";
-			data_link.value10 = "";
+			data_link.param12 = "latLong";
+			data_link.value12 = "";
 
 			if (latLong_element->FirstChildElement("latitude")) {
-				data_link.param11 = "latitude";
-				data_link.value11 = "";
+				data_link.param13 = "latitude";
+				data_link.value13 = "";
 				latLong_latitude_element = latLong_element->FirstChildElement("latitude");
 				latitude_direction = latLong_latitude_element->Attribute("direction");
-				data_link.param12 = "direction";
-				data_link.value12 = latitude_direction;
+				data_link.param14 = "direction";
+				data_link.value14 = latitude_direction;
 
 				//  latLong_latitude_degrees
 				latLong_latitude_degrees_element = latLong_latitude_element->FirstChildElement("degrees");
 				latLong_latitude_degrees = latLong_latitude_degrees_element->GetText();
-				data_link.param13 = "degrees";
-				data_link.value13 = latLong_latitude_degrees;
+				data_link.param15 = "degrees";
+				data_link.value15 = latLong_latitude_degrees;
 
 				latLong_latitude_degrees_units = latLong_latitude_degrees_element->Attribute("units");
-				data_link.param14 = "units";
-				data_link.value14 = latLong_latitude_degrees_units;
+				data_link.param16 = "units";
+				data_link.value16 = latLong_latitude_degrees_units;
 				if (latLong_latitude_degrees_element->Attribute("role")) {
 					latLong_latitude_degrees_role = latLong_latitude_degrees_element->Attribute("role");
-					data_link.param15 = "role";
-					data_link.value15 = latLong_latitude_degrees_role;
+					data_link.param17 = "role";
+					data_link.value17 = latLong_latitude_degrees_role;
 				}
 							
 
 				//  latLong_latitude_minuts
 				if (latLong_latitude_element->FirstChildElement("minutes")) {
 					latLong_latitude_minutes = latLong_latitude_element->FirstChildElement("minutes")->GetText();
-					data_link.param16 = "minutes";
-					data_link.value16 = latLong_latitude_minutes;
+					data_link.param18 = "minutes";
+					data_link.value18 = latLong_latitude_minutes;
 				}
 								
 				//  latLong_latitude_seconds
 				if (latLong_latitude_element->FirstChildElement("seconds")) {
 					latLong_latitude_seconds = latLong_latitude_element->FirstChildElement("seconds")->GetText();
-					data_link.param17 = "seconds";
-					data_link.value17 = latLong_latitude_seconds;
+					data_link.param19 = "seconds";
+					data_link.value19 = latLong_latitude_seconds;
 				}
 			}
 
 
 			if (latLong_element->FirstChildElement("longitude")) {
 				latLong_longitude_element = latLong_element->FirstChildElement("longitude");
-				data_link.param18 = "logitude";
-				data_link.value18 = "";
+				data_link.param20 = "logitude";
+				data_link.value20 = "";
 				longitude_direction = latLong_longitude_element->Attribute("direction");
-				data_link.param19 = "direction";
-				data_link.value19 = longitude_direction;
+				data_link.param21 = "direction";
+				data_link.value21 = longitude_direction;
 
 				//  latLong_latitude_degrees
 				latLong_longitude_degrees_element = latLong_longitude_element->FirstChildElement("degrees");
 				latLong_longitude_degrees = latLong_longitude_degrees_element->GetText();
-				data_link.param20 = "degrees";
-				data_link.value20 = latLong_longitude_degrees;
+				data_link.param22 = "degrees";
+				data_link.value22 = latLong_longitude_degrees;
 				latLong_longitude_degrees_units = latLong_longitude_degrees_element->Attribute("units");
-				data_link.param21 = "units";
-				data_link.value21 = latLong_longitude_degrees_units;
+				data_link.param23 = "units";
+				data_link.value23 = latLong_longitude_degrees_units;
 				if (latLong_longitude_degrees_element->Attribute("role")) {
 					latLong_longitude_degrees_role = latLong_longitude_degrees_element->Attribute("role");
-					data_link.param22 = "role";
-					data_link.value22 = latLong_longitude_degrees_role;
+					data_link.param24 = "role";
+					data_link.value24 = latLong_longitude_degrees_role;
 				}
 
 				//  latLong_latitude_minuts
 				if (latLong_longitude_element->FirstChildElement("minutes")) {
 					latLong_longitude_minutes = latLong_longitude_element->FirstChildElement("minutes")->GetText();
-					data_link.param23 = "minutes";
-					data_link.value23 = latLong_longitude_minutes;
+					data_link.param25 = "minutes";
+					data_link.value25 = latLong_longitude_minutes;
 				}
 								
 				//  fix_latLong_latitude_seconds
 				if (latLong_longitude_element->FirstChildElement("seconds")) {
 					latLong_longitude_seconds = latLong_longitude_element->FirstChildElement("seconds")->GetText();
-					data_link.param24 = "seconds";
-					data_link.value24 = latLong_longitude_seconds;
+					data_link.param26 = "seconds";
+					data_link.value26 = latLong_longitude_seconds;
 				}
 			}
 
@@ -489,98 +230,98 @@ Data_link struct_position(XMLElement *item, Data_link data_link) {
 
 			if (item->FirstChildElement("fix")){
 				fix_o_navaid_element = item->FirstChildElement("fix");
-				data_link.param10 = "fix";
-				data_link.value10 = "";
+				data_link.param27 = "fix";
+				data_link.value27 = "";
 			}
 			else {
 				fix_o_navaid_element = item->FirstChildElement("navaid");
-				data_link.param10 = "navaid";
-				data_link.value10 = "";
+				data_link.param28 = "navaid";
+				data_link.value28 = "";
 			}
 
 			fix_o_navaid_name = fix_o_navaid_element->Attribute("name");
-			data_link.param11 = "name";
-			data_link.value11 = fix_o_navaid_name;
+			data_link.param29 = "name";
+			data_link.value29 = fix_o_navaid_name;
 
 			if (fix_o_navaid_element->FirstChildElement("latLong")) {
 				latLong_element = fix_o_navaid_element->FirstChildElement("latLong");
-				data_link.param12 = "latLong";
-				data_link.value12 = "";
+				data_link.param30 = "latLong";
+				data_link.value30 = "";
 
 				if (latLong_element->FirstChildElement("latitude")) {
-					data_link.param13 = "latitude";
-					data_link.value13 = "";
+					data_link.param31 = "latitude";
+					data_link.value31 = "";
 					latLong_latitude_element = latLong_element->FirstChildElement("latitude");
 					latitude_direction = latLong_latitude_element->Attribute("direction");
-					data_link.param14 = "direction";
-					data_link.value14 = latitude_direction;
+					data_link.param32 = "direction";
+					data_link.value32 = latitude_direction;
 
 					//  latLong_latitude_degrees
 					latLong_latitude_degrees_element = latLong_latitude_element->FirstChildElement("degrees");
 					latLong_latitude_degrees = latLong_latitude_degrees_element->GetText();
-					data_link.param15 = "degrees";
-					data_link.value15 = latLong_latitude_degrees;
+					data_link.param33 = "degrees";
+					data_link.value33 = latLong_latitude_degrees;
 
 					latLong_latitude_degrees_units = latLong_latitude_degrees_element->Attribute("units");
-					data_link.param16 = "units";
-					data_link.value16 = latLong_latitude_degrees_units;
+					data_link.param34 = "units";
+					data_link.value34 = latLong_latitude_degrees_units;
 					if (latLong_latitude_degrees_element->Attribute("role")) {
 						latLong_latitude_degrees_role = latLong_latitude_degrees_element->Attribute("role");
-						data_link.param17 = "role";
-						data_link.value17 = latLong_latitude_degrees_role;
+						data_link.param35 = "role";
+						data_link.value35 = latLong_latitude_degrees_role;
 					}
 							
 
 					//  latLong_latitude_minuts
 					if (latLong_latitude_element->FirstChildElement("minutes")) {
 						latLong_latitude_minutes = latLong_latitude_element->FirstChildElement("minutes")->GetText();
-						data_link.param18 = "minutes";
-						data_link.value18 = latLong_latitude_minutes;
+						data_link.param36 = "minutes";
+						data_link.value36 = latLong_latitude_minutes;
 					}
 								
 					//  latLong_latitude_seconds
 					if (latLong_latitude_element->FirstChildElement("seconds")) {
 						latLong_latitude_seconds = latLong_latitude_element->FirstChildElement("seconds")->GetText();
-						data_link.param19 = "seconds";
-						data_link.value19 = latLong_latitude_seconds;
+						data_link.param37 = "seconds";
+						data_link.value37 = latLong_latitude_seconds;
 					}
 				}
 
 
 				if (latLong_element->FirstChildElement("longitude")) {
 					latLong_longitude_element = latLong_element->FirstChildElement("longitude");
-					data_link.param20 = "logitude";
-					data_link.value20 = "";
+					data_link.param38 = "logitude";
+					data_link.value38 = "";
 					longitude_direction = latLong_longitude_element->Attribute("direction");
-					data_link.param21 = "direction";
-					data_link.value21 = longitude_direction;
+					data_link.param39 = "direction";
+					data_link.value39 = longitude_direction;
 
 					//  latLong_latitude_degrees
 					latLong_longitude_degrees_element = latLong_longitude_element->FirstChildElement("degrees");
 					latLong_longitude_degrees = latLong_longitude_degrees_element->GetText();
-					data_link.param22 = "degrees";
-					data_link.value22 = latLong_longitude_degrees;
+					data_link.param40 = "degrees";
+					data_link.value40 = latLong_longitude_degrees;
 					latLong_longitude_degrees_units = latLong_longitude_degrees_element->Attribute("units");
-					data_link.param23 = "units";
-					data_link.value23 = latLong_longitude_degrees_units;
+					data_link.param41 = "units";
+					data_link.value41 = latLong_longitude_degrees_units;
 					if (latLong_longitude_degrees_element->Attribute("role")) {
 						latLong_longitude_degrees_role = latLong_longitude_degrees_element->Attribute("role");
-						data_link.param24 = "role";
-						data_link.value24 = latLong_longitude_degrees_role;
+						data_link.param42 = "role";
+						data_link.value42 = latLong_longitude_degrees_role;
 					}
 
 					//  latLong_latitude_minuts
 					if (latLong_longitude_element->FirstChildElement("minutes")) {
 						latLong_longitude_minutes = latLong_longitude_element->FirstChildElement("minutes")->GetText();
-						data_link.param25 = "minutes";
-						data_link.value25 = latLong_longitude_minutes;
+						data_link.param43 = "minutes";
+						data_link.value43 = latLong_longitude_minutes;
 					}
 								
 					//  fix_latLong_latitude_seconds
 					if (latLong_longitude_element->FirstChildElement("seconds")) {
 						latLong_longitude_seconds = latLong_longitude_element->FirstChildElement("seconds")->GetText();
-						data_link.param26 = "seconds";
-						data_link.value26 = latLong_longitude_seconds;
+						data_link.param44 = "seconds";
+						data_link.value44 = latLong_longitude_seconds;
 					}
 				}
 			}
@@ -589,18 +330,18 @@ Data_link struct_position(XMLElement *item, Data_link data_link) {
 			if (item->FirstChildElement("degrees")) {
 				position_degrees_element = item->FirstChildElement("degrees");
 				position_degrees = position_degrees_element->GetText();
-				data_link.param27 = "degrees";
-				data_link.value27 = position_degrees;
+				data_link.param45 = "degrees";
+				data_link.value45 = position_degrees;
 						
 						
 				position_degrees_units = position_degrees_element->Attribute("units");
-				data_link.param28 = "units";
-				data_link.value28 = position_degrees_units;
+				data_link.param46 = "units";
+				data_link.value46 = position_degrees_units;
 
 				if (position_degrees_element->Attribute("role")) {
 					position_degrees_role = position_degrees_element->Attribute("role");
-					data_link.param29 = "role";
-					data_link.value29 = position_degrees_role;
+					data_link.param47 = "role";
+					data_link.value47 = position_degrees_role;
 				}
 						
 			}
@@ -609,22 +350,22 @@ Data_link struct_position(XMLElement *item, Data_link data_link) {
 			if (item->FirstChildElement("distance")) {
 				position_distance_element = item->FirstChildElement("distance");
 				position_distance = position_distance_element->GetText();
-				data_link.param30 = "distance";
-				data_link.value30 = position_distance;
+				data_link.param48 = "distance";
+				data_link.value48 = position_distance;
 						
 				position_distance_units = position_distance_element->Attribute("units");
-				data_link.param31 = "units";
-				data_link.value31 = position_distance_units;
+				data_link.param49 = "units";
+				data_link.value49 = position_distance_units;
 
 				if (position_distance_element->Attribute("atwTolerance")) {
 					position_distance_atwTolerance = position_distance_element->Attribute("atwTolerance");
-					data_link.param32 = "atwTolerance";
-					data_link.value32 = position_distance_atwTolerance;
+					data_link.param50 = "atwTolerance";
+					data_link.value50 = position_distance_atwTolerance;
 				}
 
 				position_distance_specified = position_distance_element->Attribute("specified");
-				data_link.param33 = "specified";
-				data_link.value33 = position_distance_specified;
+				data_link.param51 = "specified";
+				data_link.value51 = position_distance_specified;
 			}
 		}
 		return data_link;
@@ -635,22 +376,6 @@ Data_link up_unique(XMLElement *item, Data_link data_link) {
 	return data_link;
 }
 
-Data_link up_23_namedinstruction(XMLElement *i, Data_link data_link) {
-	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
-				const char *element_name_sub = item->Name();
-
-					/*************************
-					*		namedinstruction *
-					*************************/
-					if (!strcmp(element_name_sub, "namedinstruction")) {
-						XMLElement *namedinstruction_element = item;
-						data_link.param7 = "namedinstruction";
-						data_link.value7 = namedinstruction_element->GetText();
-					}
-	}
-	return data_link;
-}
-
 Data_link up_46_47_48_position_level(XMLElement *i, Data_link data_link) {
 	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
 				const char *element_name_sub = item->Name();
@@ -658,59 +383,59 @@ Data_link up_46_47_48_position_level(XMLElement *i, Data_link data_link) {
 				if (!strcmp(element_name_sub, "position"))
 					data_link = struct_position(item, data_link);
 
-					/*************************
-					*		level			 *
-					*************************/
-					if (!strcmp(element_name_sub, "level")) {
-						XMLElement *level_element = item;
-						data_link.param34 = "level";
-						data_link.value34 = "";
+				/*************************
+				*		level			 *
+				*************************/
+				if (!strcmp(element_name_sub, "level")) {
+					XMLElement *level_element = item;
+					data_link.param52 = "level";
+					data_link.value52 = "";
 
-						if (level_element->Attribute("atwTolerance")) {
-							const char *level_element_atwTolerance = level_element->Attribute("atwTolerance");
-							data_link.param35 = "atwTolerance";
-							data_link.value35 = level_element_atwTolerance;
-						}
+					if (level_element->Attribute("atwTolerance")) {
+						const char *level_element_atwTolerance = level_element->Attribute("atwTolerance");
+						data_link.param53 = "atwTolerance";
+						data_link.value53 = level_element_atwTolerance;
+					}
 
-						if (level_element->Attribute("type")) {
-							const char *level_element_type = level_element->Attribute("type");
-							data_link.param36 = "type";
-							data_link.value36 = level_element_type;
-						}
+					if (level_element->Attribute("type")) {
+						const char *level_element_type = level_element->Attribute("type");
+						data_link.param54 = "type";
+						data_link.value54 = level_element_type;
+					}
 
+					XMLElement *leveldata_element = level_element->FirstChildElement("leveldata");
+					data_link.param55 = "leveldata";
+					data_link.value55 = leveldata_element->GetText();
+
+					const char *leveldata_units = leveldata_element->Attribute("units");
+					data_link.param56 = "units";
+					data_link.value56 = leveldata_units;
+
+					if (leveldata_element->Attribute("role")) {
+						const char *leveldata_role = leveldata_element->Attribute("role");
+						data_link.param57 = "role";
+						data_link.value57 = leveldata_element->Attribute("role");
+					}
+
+					if (level_element->LastChildElement("leveldata")) {
 						XMLElement *leveldata_element = level_element->FirstChildElement("leveldata");
-						data_link.param37 = "leveldata";
-						data_link.value37 = leveldata_element->GetText();
+						data_link.param58 = "leveldata";
+						data_link.value58 = leveldata_element->GetText();
 
 						const char *leveldata_units = leveldata_element->Attribute("units");
-						data_link.param38 = "units";
-						data_link.value38 = leveldata_units;
+						data_link.param59 = "units";
+						data_link.value59 = leveldata_element->GetText();
 
 						if (leveldata_element->Attribute("role")) {
 							const char *leveldata_role = leveldata_element->Attribute("role");
-							data_link.param38 = "role";
-							data_link.value38 = leveldata_element->Attribute("role");
-						}
-
-						if (level_element->LastChildElement("leveldata")) {
-							XMLElement *leveldata_element = level_element->FirstChildElement("leveldata");
-							data_link.param39 = "leveldata";
-							data_link.value39 = leveldata_element->GetText();
-
-							const char *leveldata_units = leveldata_element->Attribute("units");
-							data_link.param40 = "units";
-							data_link.value40 = leveldata_element->GetText();
-
-							if (leveldata_element->Attribute("role")) {
-								const char *leveldata_role = leveldata_element->Attribute("role");
-								data_link.param41 = "role";
-								data_link.value41 = leveldata_element->Attribute("role");
-							}
-
+							data_link.param60 = "role";
+							data_link.value60 = leveldata_element->Attribute("role");
 						}
 
 					}
-					}
+
+				}
+	}
 	return data_link;
 }
 
@@ -991,22 +716,6 @@ Data_link up_61_position_level_speed(XMLElement *i, Data_link data_link) {
 	return data_link;
 }
 
-Data_link down_65_reason(XMLElement *i, Data_link data_link) {
-	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
-		const char *element_name_sub = item->Name();
-		/*****************************************
-		*		Due to reason					 *
-		******************************************/
-		if (!strcmp(element_name_sub, "reason")) {
-			XMLElement *reason_element = item;
-			data_link.param7 = "reason";
-			data_link.value7 = reason_element->GetText();
-
-		}
-	}
-	 return data_link;
- }
-
 Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 	int time_flag = 0;
 	int count = 1;
@@ -1272,22 +981,6 @@ Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 	return data_link;
 }
 
- Data_link down_97_98_freetext(XMLElement *i, Data_link data_link) {
-	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
-		const char *element_name_sub = item->Name();
-		/*****************************************
-		*		freetext						 *
-		******************************************/
-		if (!strcmp(element_name_sub, "freetext")) {
-			XMLElement *freetext_element = item;
-			data_link.param7 = "freetext";
-			data_link.value7 = freetext_element->GetText();
-
-		}
-	}
-	 return data_link;
- }
-
  Data_link up_106_108_109_110_288_289_290_291_292_speed(XMLElement *i, Data_link data_link) {
 	int speed_flag = 0;
 	int count = 1;
@@ -1329,33 +1022,6 @@ Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 	}
 	return data_link;
  }
-
- Data_link down_139_140_speed(XMLElement *i, Data_link data_link) {
-	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
-				const char *element_name_sub = item->Name();
-
-				/*************************
-				*		speed			 *
-				*************************/
-
-				if (!strcmp(element_name_sub, "speed")) {
-					data_link.param7 = "speed";
-					data_link.value7 = item->GetText();
-
-					
-					data_link.param8 = "units";
-					data_link.value8 = item->Attribute("units");
-					
-
-					if (item->Attribute("use")) { 
-						data_link.param9 = "use";
-						data_link.value9 = item->Attribute("use");
-					}
-				}
-
-	}
-	return data_link;
-}
 
  Data_link up_159_errorInformation(XMLElement *i, Data_link data_link) {
 	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
@@ -1482,21 +1148,372 @@ Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 
  }
 
- Data_link up_62_errorInformation(XMLElement *i, Data_link data_link) {
-	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
-		const char *element_name_sub = item->Name();
-		/*****************************************
-		*		errorInformation				 *
-		******************************************/
-		if (!strcmp(element_name_sub, "errorInformation")) {
-			XMLElement *errorInformation_element = item;
-			data_link.param7 = "errorInformation";
-			data_link.value7 = errorInformation_element->GetText();
 
-		}
+
+
+void down_struct_to_XML(Data_link datalink) {
+	XMLDocument xmlDoc;
+
+	/*****************************************
+	*		down msg unique					 *
+	*****************************************/
+
+	if (!datalink.msg_element_id.compare("0") || !datalink.msg_element_id.compare("1") || !datalink.msg_element_id.compare("2")
+		|| !datalink.msg_element_id.compare("100") || !datalink.msg_element_id.compare("145") || !datalink.msg_element_id.compare("155")){
+		string flight_id = datalink.value1;
+		string direction = datalink.value2;
+		string date = datalink.value3;
+		string time = datalink.value4;
+
+		
+		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
+		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
+		cpdlc_message_item->SetAttribute("direction", "down");
+		xmlDoc.InsertFirstChild(cpdlc_message_item);
+
+		//Header 
+		XMLElement *header_item = xmlDoc.NewElement("header"); 
+		XMLElement *date_item = xmlDoc.NewElement("date");
+		date_item->SetText(date.c_str());
+		XMLElement *time_item = xmlDoc.NewElement("time");
+		time_item->SetText(time.c_str());
+
+		cpdlc_message_item->InsertEndChild(header_item);
+		header_item->InsertEndChild(date_item);
+		header_item->InsertEndChild(time_item);
+
+		// msg-element
+		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
+		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
+		cpdlc_message_item->InsertEndChild(msg_element_item);
 	}
-	 return data_link;
- }
+
+	/*****************************************
+	*		down 23							 *
+	*****************************************/
+
+	if (!datalink.msg_element_id.compare("23")){
+		string flight_id = datalink.value1;
+		string direction = datalink.value2;
+		string date = datalink.value3;
+		string time = datalink.value4;
+
+		
+		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
+		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
+		cpdlc_message_item->SetAttribute("direction", "down");
+		xmlDoc.InsertFirstChild(cpdlc_message_item);
+
+		//Header 
+		XMLElement *header_item = xmlDoc.NewElement("header"); 
+		XMLElement *date_item = xmlDoc.NewElement("date");
+		date_item->SetText(date.c_str());
+		XMLElement *time_item = xmlDoc.NewElement("time");
+		time_item->SetText(time.c_str());
+
+		cpdlc_message_item->InsertEndChild(header_item);
+		header_item->InsertEndChild(date_item);
+		header_item->InsertEndChild(time_item);
+
+		// msg-element
+		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
+		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
+		cpdlc_message_item->InsertEndChild(msg_element_item);
+
+		XMLElement *namedinstruction_item = xmlDoc.NewElement("namedinstruction");
+		namedinstruction_item->SetText(datalink.value7.c_str());
+		msg_element_item->InsertEndChild(namedinstruction_item);
+	}
+
+	/*****************************************
+	*		down 62							 *
+	*****************************************/
+
+	if (!datalink.msg_element_id.compare("62")){
+		string flight_id = datalink.value1;
+		string direction = datalink.value2;
+		string date = datalink.value3;
+		string time = datalink.value4;
+
+		
+		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
+		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
+		cpdlc_message_item->SetAttribute("direction", "down");
+		xmlDoc.InsertFirstChild(cpdlc_message_item);
+
+		//Header 
+		XMLElement *header_item = xmlDoc.NewElement("header"); 
+		XMLElement *date_item = xmlDoc.NewElement("date");
+		date_item->SetText(date.c_str());
+		XMLElement *time_item = xmlDoc.NewElement("time");
+		time_item->SetText(time.c_str());
+
+		cpdlc_message_item->InsertEndChild(header_item);
+		header_item->InsertEndChild(date_item);
+		header_item->InsertEndChild(time_item);
+
+		// msg-element
+		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
+		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
+		cpdlc_message_item->InsertEndChild(msg_element_item);
+
+		XMLElement *namedinstruction_item = xmlDoc.NewElement("errorInformation");
+		namedinstruction_item->SetText(datalink.value7.c_str());
+		msg_element_item->InsertEndChild(namedinstruction_item);
+	}
+
+
+
+	/*****************************************
+	*		down 65: Due to weather			 *
+	*****************************************/
+
+	if (!datalink.msg_element_id.compare("65")) {
+		string flight_id = datalink.value1;
+		string date = datalink.value2;
+		string time = datalink.value3;
+
+		
+		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
+		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
+		cpdlc_message_item->SetAttribute("direction", "down");
+		xmlDoc.InsertFirstChild(cpdlc_message_item);
+
+		//Header 
+		XMLElement *header_item = xmlDoc.NewElement("header"); 
+		XMLElement *date_item = xmlDoc.NewElement("date");
+		date_item->SetText(date.c_str());
+		XMLElement *time_item = xmlDoc.NewElement("time");
+		time_item->SetText(time.c_str());
+
+		cpdlc_message_item->InsertEndChild(header_item);
+		header_item->InsertEndChild(date_item);
+		header_item->InsertEndChild(time_item);
+
+		// msg-element
+		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
+		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
+		cpdlc_message_item->InsertEndChild(msg_element_item);
+
+		XMLElement *reason_item = xmlDoc.NewElement("reason");
+		reason_item->SetText(datalink.value7.c_str());
+		msg_element_item->InsertEndChild(reason_item);
+	
+	}
+
+	/*****************************************
+	*		down 97-98: Freetext			 *
+	*****************************************/
+
+	if (!datalink.msg_element_id.compare("97") || !datalink.msg_element_id.compare("98")) {
+		string flight_id = datalink.value1;
+		string date = datalink.value2;
+		string time = datalink.value3;
+
+		
+		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
+		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
+		cpdlc_message_item->SetAttribute("direction", "down");
+		xmlDoc.InsertFirstChild(cpdlc_message_item);
+
+		//Header 
+		XMLElement *header_item = xmlDoc.NewElement("header"); 
+		XMLElement *date_item = xmlDoc.NewElement("date");
+		date_item->SetText(date.c_str());
+		XMLElement *time_item = xmlDoc.NewElement("time");
+		time_item->SetText(time.c_str());
+
+		cpdlc_message_item->InsertEndChild(header_item);
+		header_item->InsertEndChild(date_item);
+		header_item->InsertEndChild(time_item);
+
+		// msg-element
+		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
+		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
+		cpdlc_message_item->InsertEndChild(msg_element_item);
+
+		XMLElement *freetext_item = xmlDoc.NewElement("freetext");
+		freetext_item->SetText(datalink.value7.c_str());
+		msg_element_item->InsertEndChild(freetext_item);
+	
+	}
+	
+
+	/*****************************************
+	*		down 139-140: Speed				 *
+	*****************************************/
+
+	if (!datalink.msg_element_id.compare("139") || !datalink.msg_element_id.compare("140")) {
+		string flight_id = datalink.value1;
+		string date = datalink.value2;
+		string time = datalink.value3;
+
+		
+		XMLElement *cpdlc_message_item = xmlDoc.NewElement("cpdlc-message");
+		cpdlc_message_item->SetAttribute("flight-id", flight_id.c_str());
+		cpdlc_message_item->SetAttribute("direction", "down");
+		xmlDoc.InsertFirstChild(cpdlc_message_item);
+
+		//Header 
+		XMLElement *header_item = xmlDoc.NewElement("header"); 
+		XMLElement *date_item = xmlDoc.NewElement("date");
+		date_item->SetText(date.c_str());
+		XMLElement *time_item = xmlDoc.NewElement("time");
+		time_item->SetText(time.c_str());
+
+		cpdlc_message_item->InsertEndChild(header_item);
+		header_item->InsertEndChild(date_item);
+		header_item->InsertEndChild(time_item);
+
+		// msg-element
+		XMLElement *msg_element_item = xmlDoc.NewElement("msg-element"); 
+		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
+		cpdlc_message_item->InsertEndChild(msg_element_item);
+
+		// speed
+		XMLElement *speed_item = xmlDoc.NewElement("speed");
+		speed_item->SetText(datalink.value7.c_str());
+		speed_item->SetAttribute("units", datalink.value8.c_str());
+		speed_item->SetAttribute("use", datalink.value9.c_str());
+		msg_element_item->InsertEndChild(speed_item);
+	
+	}
+
+	/*XMLDocument xmlDoc;
+	char file_path[100];
+	char *path_dir = "msg_original/";
+	const char *filename_ch = xml_filename.c_str();
+	strcpy_s(file_path, path_dir);
+	strcat_s(file_path, sizeof file_path, filename_ch);
+	XMLError eResult = xmlDoc.LoadFile(file_path);
+	XMLCheckResult(eResult);*/
+
+	char file_path[100];
+	char *path_dir = "msg_generated_down/";
+	string filename = "Down" + datalink.msg_element_id + ".xml";
+	const char *filename_ch = filename.c_str();
+	strcpy_s(file_path, path_dir);
+	strcat_s(file_path, sizeof file_path, filename_ch);
+	XMLError eResult = xmlDoc.SaveFile(file_path);
+	XMLCheckResult(eResult);
+
+	// Save XML file to disk
+	//string filename = "Down" + datalink.msg_element_id + ".xml";
+	//XMLError eResult = xmlDoc.SaveFile(filename.c_str());
+	//XMLCheckResult(eResult);
+	/*cout << "*** Down_struct_to_XML: Down" + datalink.msg_element_id + ".xml";
+	cout << "\n" + filename + " is written in the disk successfully.\n";*/
+
+
+}
+
+vector<string>	down_XML_to_bytes(string xml_filename) {
+	XMLDocument xmlDoc;
+	//XMLError eResult = xmlDoc.LoadFile(xml_filename.c_str());
+	char file_path[100];
+	char *path_dir = "msg_generated_down/";
+	const char *filename_ch = xml_filename.c_str();
+	strcpy_s(file_path, path_dir);
+	strcat_s(file_path, sizeof file_path, filename_ch);
+	
+	XMLError eResult = xmlDoc.LoadFile(file_path);
+	XMLCheckResult(eResult);
+
+	// Read the XML file as string and stored in "char *text"
+	XMLPrinter printer;
+	xmlDoc.Accept(&printer);
+	const char *text = printer.CStr();
+	int len = strlen(text);
+	std::ostringstream stm;
+	string str_temp;
+	const char *cstr = NULL;
+	vector<string> databyte_output;
+	databyte_output.reserve(len);
+
+	// Convert every char to HEX bytes and store it in vector
+	for (int i = 0; i < len; i++) {
+		stm << uppercase << std::hex << (int)text[i];
+		str_temp = stm.str();
+		databyte_output.push_back(str_temp);
+		//cout << str_temp << endl;
+		// clear the buffer of the stream
+		stm.clear();
+		stm.str("");
+	}
+	//cout << "\n*** " + xml_filename + " has been transformed into 'vector<string>' data bytes successfully.\n";
+	return databyte_output;
+}
+
+vector<string>	fake_down_XML_to_bytes(string xml_filename) {
+	XMLDocument xmlDoc;
+	//XMLError eResult = xmlDoc.LoadFile(xml_filename.c_str());
+	char file_path[100];
+	char *path_dir = "msg_fake/";
+	const char *filename_ch = xml_filename.c_str();
+	strcpy_s(file_path, path_dir);
+	strcat_s(file_path, sizeof file_path, filename_ch);
+	
+	XMLError eResult = xmlDoc.LoadFile(file_path);
+	XMLCheckResult(eResult);
+
+	// Read the XML file as string and stored in "char *text"
+	XMLPrinter printer;
+	xmlDoc.Accept(&printer);
+	const char *text = printer.CStr();
+	int len = strlen(text);
+	std::ostringstream stm;
+	string str_temp;
+	const char *cstr = NULL;
+	vector<string> databyte_output;
+	databyte_output.reserve(len);
+
+	// Convert every char to HEX bytes and store it in vector
+	for (int i = 0; i < len; i++) {
+		stm << uppercase << std::hex << (int)text[i];
+		str_temp = stm.str();
+		databyte_output.push_back(str_temp);
+		//cout << str_temp << endl;
+		// clear the buffer of the stream
+		stm.clear();
+		stm.str("");
+	}
+	//cout << "\n*** " + xml_filename + " has been transformed into 'vector<string>' data bytes successfully.\n";
+	return databyte_output;
+}
+
+void	up_bytes_to_XML(vector<string> vector_databytes, string xml_filename) {
+	/* Example of initialization one vector */
+	/*static const string arr[] = {"1A", "3C", "6B", "3A"};
+	vector<string> m (arr, arr + sizeof(arr) / sizeof(arr[0]));
+	for (int i = 0; i < m.size(); i++)
+		cout << m[i];*/
+	
+	stringstream ss;
+	int x;
+	char to_write;
+
+	char file_path[100];
+	char *path_dir = "msg_generated_up/";
+	const char *filename_ch = xml_filename.c_str();
+	strcpy_s(file_path, path_dir);
+	strcat_s(file_path, sizeof file_path, filename_ch);
+
+	ofstream myfile (file_path);
+
+	int len = vector_databytes.size();
+	for (int i = 0; i < len; i++) {
+		ss << hex << vector_databytes[i];
+		ss >> x;
+		to_write = static_cast<char> (x);
+		if (myfile.is_open()) {
+			myfile << to_write;
+		}
+		ss.clear();
+	}
+	
+	myfile.close();	
+	//cout << "\n*** Convert from data bytes into " + xml_filename + " successfully " << endl;
+}
 
 Data_link	up_XML_to_struct(string xml_filename) {
 	Data_link data_link;
@@ -1611,7 +1628,7 @@ Data_link	up_XML_to_struct(string xml_filename) {
 
 	XMLDocument xmlDoc;
 	char file_path[100];
-	char *path_dir = "msg_original/";
+	char *path_dir = "msg_generated_up/";
 	const char *filename_ch = xml_filename.c_str();
 	strcpy_s(file_path, path_dir);
 	strcat_s(file_path, sizeof file_path, filename_ch);
@@ -1639,17 +1656,18 @@ Data_link	up_XML_to_struct(string xml_filename) {
 	data_link.value2 = "up";
 	count++;
 
-	// Header
-
 	for (XMLElement *i = pRoot->FirstChildElement(); i != NULL; i = i->NextSiblingElement()) {	
+		// Header
 		data_link = struct_header(i, data_link);
 
-		if (!data_link.msg_element_id.compare("0") || !data_link.msg_element_id.compare("1") || !data_link.msg_element_id.compare("2")) {
+		if (!data_link.msg_element_id.compare("0") || !data_link.msg_element_id.compare("1") || !data_link.msg_element_id.compare("2") || !data_link.msg_element_id.compare("107") || !data_link.msg_element_id.compare("116") || !data_link.msg_element_id.compare("143") || !data_link.msg_element_id.compare("162") || !data_link.msg_element_id.compare("211") || 
+			!data_link.msg_element_id.compare("218") || !data_link.msg_element_id.compare("222") || !data_link.msg_element_id.compare("224") || !data_link.msg_element_id.compare("225") ||
+			!data_link.msg_element_id.compare("227") || !data_link.msg_element_id.compare("237") || !data_link.msg_element_id.compare("247") || !data_link.msg_element_id.compare("293") || !data_link.msg_element_id.compare("320")) {
 			data_link = up_unique(i, data_link);
 		}
-		if (!data_link.msg_element_id.compare("23")){
+		/*if (!data_link.msg_element_id.compare("23")){
 			data_link = up_23_namedinstruction(i, data_link);
-		}	
+		}	*/
 
 		int time_flag = 0;
 		if (!data_link.msg_element_id.compare("46") || !data_link.msg_element_id.compare("47") || !data_link.msg_element_id.compare("48")) {
@@ -1669,9 +1687,9 @@ Data_link	up_XML_to_struct(string xml_filename) {
 			data_link = up_61_position_level_speed(i, data_link);
 		}
 
-		if (!data_link.msg_element_id.compare("62")) {
+		/*if (!data_link.msg_element_id.compare("62")) {
 			data_link = up_62_errorInformation(i, data_link);
-		}
+		}*/
 
 
 		if (!data_link.msg_element_id.compare("63")) {
@@ -1679,9 +1697,9 @@ Data_link	up_XML_to_struct(string xml_filename) {
 		}
 
 		
-		if (!data_link.msg_element_id.compare("65")) {
+		/*if (!data_link.msg_element_id.compare("65")) {
 			data_link = down_65_reason(i, data_link);
-		}
+		}*/
 
 		if (!data_link.msg_element_id.compare("79")) {
 			data_link = up_79_position_routeClearanceIndex(i, data_link);
@@ -1695,6 +1713,7 @@ Data_link	up_XML_to_struct(string xml_filename) {
 			data_link = up_81_procedure(i, data_link);
 		}
 		
+		// Riferimento DTD
 		if (!data_link.msg_element_id.compare("82")) {
 			data_link = up_82_distance_direction(i, data_link);
 		}
@@ -1703,13 +1722,13 @@ Data_link	up_XML_to_struct(string xml_filename) {
 			data_link = up_84_position_procedure(i, data_link);
 		}
 		
-		if (!data_link.msg_element_id.compare("97") || !data_link.msg_element_id.compare("98")) {
+		/*if (!data_link.msg_element_id.compare("97") || !data_link.msg_element_id.compare("98")) {
 			data_link = down_97_98_freetext(i, data_link);
-		}
+		}*/
 
-		if (!data_link.msg_element_id.compare("139") || !data_link.msg_element_id.compare("140")) {
+		/*if (!data_link.msg_element_id.compare("139") || !data_link.msg_element_id.compare("140")) {
 			data_link = down_139_140_speed(i, data_link);
-		}
+		}*/
 		
 
 		if (!data_link.msg_element_id.compare("106") || !data_link.msg_element_id.compare("108") || !data_link.msg_element_id.compare("109") || !data_link.msg_element_id.compare("110") 
@@ -1737,89 +1756,11 @@ Data_link	up_XML_to_struct(string xml_filename) {
 		
 		if (!data_link.msg_element_id.compare("322") || !data_link.msg_element_id.compare("323") || !data_link.msg_element_id.compare("324")) {
 			data_link = up_322_323_324_position_time_speed(i, data_link);
-		} 
-
-			
-		if (!data_link.msg_element_id.compare("107") || !data_link.msg_element_id.compare("116") || !data_link.msg_element_id.compare("143") || !data_link.msg_element_id.compare("162") || !data_link.msg_element_id.compare("211") || 
-			!data_link.msg_element_id.compare("218") || !data_link.msg_element_id.compare("222") || !data_link.msg_element_id.compare("224") || !data_link.msg_element_id.compare("225") ||
-			!data_link.msg_element_id.compare("227") || !data_link.msg_element_id.compare("237") || !data_link.msg_element_id.compare("293") || !data_link.msg_element_id.compare("320")) {
-			data_link = up_unique(i, data_link);
-		}
+		} 	
 
 	}
 	
 	return  data_link;
-}
-
-vector<string>	down_XML_to_bytes(string xml_filename) {
-	XMLDocument xmlDoc;
-	//XMLError eResult = xmlDoc.LoadFile(xml_filename.c_str());
-	char file_path[100];
-	char *path_dir = "msg_original/";
-	const char *filename_ch = xml_filename.c_str();
-	strcpy_s(file_path, path_dir);
-	strcat_s(file_path, sizeof file_path, filename_ch);
-	
-	XMLError eResult = xmlDoc.LoadFile(file_path);
-	XMLCheckResult(eResult);
-
-	// Read the XML file as string and stored in "char *text"
-	XMLPrinter printer;
-	xmlDoc.Accept(&printer);
-	const char *text = printer.CStr();
-	int len = strlen(text);
-	std::ostringstream stm;
-	string str_temp;
-	const char *cstr = NULL;
-	vector<string> databyte_output;
-	databyte_output.reserve(len);
-
-	// Convert every char to HEX bytes and store it in vector
-	for (int i = 0; i < len; i++) {
-		stm << uppercase << std::hex << (int)text[i];
-		str_temp = stm.str();
-		databyte_output.push_back(str_temp);
-		//cout << str_temp << endl;
-		// clear the buffer of the stream
-		stm.clear();
-		stm.str("");
-	}
-	//cout << "\n*** " + xml_filename + " has been transformed into 'vector<string>' data bytes successfully.\n";
-	return databyte_output;
-}
-
-void	up_bytes_to_XML(vector<string> vector_databytes, string xml_filename) {
-	/* Example of initialization one vector */
-	/*static const string arr[] = {"1A", "3C", "6B", "3A"};
-	vector<string> m (arr, arr + sizeof(arr) / sizeof(arr[0]));
-	for (int i = 0; i < m.size(); i++)
-		cout << m[i];*/
-	
-	stringstream ss;
-	int x;
-	char to_write;
-
-	char file_path[100];
-	char *path_dir = "msg_generated_up/";
-	const char *filename_ch = xml_filename.c_str();
-	strcpy_s(file_path, path_dir);
-	strcat_s(file_path, sizeof file_path, filename_ch);
-
-	ofstream myfile (file_path);
-
-	int len = vector_databytes.size();
-	for (int i = 0; i < len; i++) {
-		ss << hex << vector_databytes[i];
-		ss >> x;
-		to_write = static_cast<char> (x);
-		if (myfile.is_open()) {
-			myfile << to_write;
-		}
-		ss.clear();
-	}
-	
-	myfile.close();	
-	//cout << "\n*** Convert from data bytes into " + xml_filename + " successfully " << endl;
 }
 
 Data_link	up_bytes_to_struct(vector<string> vector_databytes, string xml_filename) {
