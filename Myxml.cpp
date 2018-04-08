@@ -842,7 +842,7 @@ Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 	
 }
 
- Data_link up_79_position_routeClearanceIndex(XMLElement *i, Data_link data_link) {
+ Data_link up_79_positionR_departuredataO_routeClearanceR(XMLElement *i, Data_link data_link) {
 	for (XMLElement *item = i->FirstChildElement(); item != NULL; item = item->NextSiblingElement()) {
 		const char *element_name_sub = item->Name();
 
@@ -853,7 +853,23 @@ Data_link up_63_position_time_level_speed(XMLElement *i, Data_link data_link) {
 			data_link = struct_position(item, data_link);
 
 		/*********************************
-		*		routeClearanceIndex		 *
+		*	departure dataO				 *
+		**********************************/
+			// departure aiport
+			if (!strcmp(element_name_sub, "airport")) {
+				XMLElement *airport_element = item;
+				data_link.param34 = "airport";
+				data_link.value34 = airport_element->GetText();
+
+				data_link.param35 = "role";
+				data_link.value35 = airport_element->Attribute("role");
+			}
+
+
+
+
+		/*********************************
+		*		routeClearanceR			 *
 		**********************************/
 		if (!strcmp(element_name_sub, "routeClearanceIndex")) {
 			XMLElement *routeClearanceIndex_element = item;
@@ -1702,7 +1718,7 @@ Data_link	up_XML_to_struct(string xml_filename) {
 		}*/
 
 		if (!data_link.msg_element_id.compare("79")) {
-			data_link = up_79_position_routeClearanceIndex(i, data_link);
+			data_link = up_79_positionR_departuredataO_routeClearanceR(i, data_link);
 		}
 		
 		if (!data_link.msg_element_id.compare("80")) {

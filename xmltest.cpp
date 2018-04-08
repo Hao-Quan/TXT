@@ -270,14 +270,19 @@ int main(){
 	*																			*
 	*	Release Date: 05-04-2018												*
 	*****************************************************************************/
-	vector<string> bytes_up46 = fake_down_XML_to_bytes("Up46.xml");
+	/*vector<string> bytes_up46 = fake_down_XML_to_bytes("Up46.xml");
 	Data_link dlup46 = up_bytes_to_struct(bytes_up46, "Up46.xml");
 
 	vector<string> bytes_up46_airport = fake_down_XML_to_bytes("Up46_airport.xml");
 	Data_link dlup46_airport = up_bytes_to_struct(bytes_up46_airport, "Up46_airport.xml");
 
 	vector<string> bytes_up46_latLong = fake_down_XML_to_bytes("Up46_latLong.xml");
-	Data_link dlup46_latLong = up_bytes_to_struct(bytes_up46_latLong, "Up46_latLong.xml");
+	Data_link dlup46_latLong = up_bytes_to_struct(bytes_up46_latLong, "Up46_latLong.xml");*/
+
+	vector<string> bytes_up79 = fake_down_XML_to_bytes("Up79.xml");
+	Data_link dlup79 = up_bytes_to_struct(bytes_up79, "Up79.xml");
+
+	cout << "\n";
 
 	/*
 	Data_link dldown0;
