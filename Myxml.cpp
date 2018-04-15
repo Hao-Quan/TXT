@@ -287,7 +287,7 @@ Data_link struct_position(XMLElement *item, Data_link data_link) {
 					}
 				}
 
-
+					
 				if (latLong_element->FirstChildElement("longitude")) {
 					latLong_longitude_element = latLong_element->FirstChildElement("longitude");
 					data_link.param38 = "logitude";

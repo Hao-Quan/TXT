@@ -268,7 +268,7 @@ int main(){
 	*	Input: HEX DataBytes "down"	(file stored in directory "msg_original")	*
 	*	Output: Structure (file stored in the directory "msg_generated")		*
 	*																			*
-	*	Release Date: 05-04-2018												*
+	*	Release Date: 15-04-2018												*
 	*****************************************************************************/
 	/*vector<string> bytes_up46 = fake_down_XML_to_bytes("Up46.xml");
 	Data_link dlup46 = up_bytes_to_struct(bytes_up46, "Up46.xml");
@@ -284,7 +284,7 @@ int main(){
 
 	cout << "\n";
 
-	/*
+	
 	Data_link dldown0;
 	dldown0.msg_element_id = "0";
 	dldown0.param1 = "flight-id";
@@ -339,7 +339,7 @@ int main(){
 	dldown2.value5 = "";
 	dldown2.value6 = "2";
 
-	vector<string> byets_down2 = down_struct_to_bytes(dldown2, "Down2.xml");*/
+	vector<string> byets_down2 = down_struct_to_bytes(dldown2, "Down2.xml");
 
 	//Data_link dldown1 = up_XML_to_struct("Down1.xml");
 	//vector<string> byets_down1 = down_struct_to_bytes(dldown1, "Down1.xml");
