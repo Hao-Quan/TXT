@@ -1190,9 +1190,9 @@ void down_struct_to_XML(Data_link datalink) {
 		//Header 
 		XMLElement *header_item = xmlDoc.NewElement("header"); 
 		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
+		date_item->SetText(datalink.value3.c_str());
 		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
+		time_item->SetText(datalink.value4.c_str());
 
 		cpdlc_message_item->InsertEndChild(header_item);
 		header_item->InsertEndChild(date_item);
@@ -1223,9 +1223,9 @@ void down_struct_to_XML(Data_link datalink) {
 		//Header 
 		XMLElement *header_item = xmlDoc.NewElement("header"); 
 		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
+		date_item->SetText(datalink.value3.c_str());
 		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
+		time_item->SetText(datalink.value4.c_str());
 
 		cpdlc_message_item->InsertEndChild(header_item);
 		header_item->InsertEndChild(date_item);
@@ -1236,9 +1236,23 @@ void down_struct_to_XML(Data_link datalink) {
 		msg_element_item->SetAttribute("id", datalink.msg_element_id.c_str());
 		cpdlc_message_item->InsertEndChild(msg_element_item);
 
-		XMLElement *namedinstruction_item = xmlDoc.NewElement("namedinstruction");
-		namedinstruction_item->SetText(datalink.value7.c_str());
-		msg_element_item->InsertEndChild(namedinstruction_item);
+		// clearance
+		XMLElement *clearance_item = xmlDoc.NewElement("clearance");
+		clearance_item->SetText(datalink.value7.c_str());
+		clearance_item->SetAttribute("type", datalink.value8.c_str());
+		msg_element_item->InsertEndChild(clearance_item);
+
+		// procedure
+		XMLElement *procedure_item = xmlDoc.NewElement("procedure");
+		procedure_item->SetText(datalink.value9.c_str());
+		procedure_item->SetAttribute("name", datalink.value10.c_str());
+		procedure_item->SetAttribute("type", datalink.value11.c_str());
+		msg_element_item->InsertEndChild(procedure_item);
+
+		// procedure-transition
+		XMLElement *procedure_transition_item = xmlDoc.NewElement("procedure-transition");
+		procedure_transition_item->SetText(datalink.value12.c_str());
+		procedure_item->InsertEndChild(procedure_transition_item);
 	}
 
 	/*****************************************
@@ -1260,9 +1274,9 @@ void down_struct_to_XML(Data_link datalink) {
 		//Header 
 		XMLElement *header_item = xmlDoc.NewElement("header"); 
 		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
+		date_item->SetText(datalink.value3.c_str());
 		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
+		time_item->SetText(datalink.value4.c_str());
 
 		cpdlc_message_item->InsertEndChild(header_item);
 		header_item->InsertEndChild(date_item);
@@ -1298,9 +1312,9 @@ void down_struct_to_XML(Data_link datalink) {
 		//Header 
 		XMLElement *header_item = xmlDoc.NewElement("header"); 
 		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
+		date_item->SetText(datalink.value3.c_str());
 		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
+		time_item->SetText(datalink.value4.c_str());
 
 		cpdlc_message_item->InsertEndChild(header_item);
 		header_item->InsertEndChild(date_item);
@@ -1335,9 +1349,9 @@ void down_struct_to_XML(Data_link datalink) {
 		//Header 
 		XMLElement *header_item = xmlDoc.NewElement("header"); 
 		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
+		date_item->SetText(datalink.value3.c_str());
 		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
+		time_item->SetText(datalink.value4.c_str());
 
 		cpdlc_message_item->InsertEndChild(header_item);
 		header_item->InsertEndChild(date_item);
@@ -1353,7 +1367,7 @@ void down_struct_to_XML(Data_link datalink) {
 		msg_element_item->InsertEndChild(freetext_item);
 	
 	}
-	
+
 
 	/*****************************************
 	*		down 139-140: Speed				 *
@@ -1373,9 +1387,9 @@ void down_struct_to_XML(Data_link datalink) {
 		//Header 
 		XMLElement *header_item = xmlDoc.NewElement("header"); 
 		XMLElement *date_item = xmlDoc.NewElement("date");
-		date_item->SetText(date.c_str());
+		date_item->SetText(datalink.value3.c_str());
 		XMLElement *time_item = xmlDoc.NewElement("time");
-		time_item->SetText(time.c_str());
+		time_item->SetText(datalink.value4.c_str());
 
 		cpdlc_message_item->InsertEndChild(header_item);
 		header_item->InsertEndChild(date_item);

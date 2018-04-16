@@ -5,7 +5,7 @@
     </header>
     <msg-element id="62">
 		<errorInformation>
-			badroute
+			insufficient resources
 		</errorInformation>
     </msg-element>
 </cpdlc-message>

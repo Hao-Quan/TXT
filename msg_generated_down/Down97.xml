@@ -1,9 +1,9 @@
-<cpdlc-message flight-id="AAL123" direction="down">
+<cpdlc-message flight-id="ABC333" direction="down">
     <header>
-        <date>up</date>
-        <time>2002/03/29</time>
+        <date>2018/03/12</date>
+        <time>22:36:43</time>
     </header>
     <msg-element id="97">
-        <freetext>buongiorno</freetext>
+        <freetext>www</freetext>
     </msg-element>
 </cpdlc-message>

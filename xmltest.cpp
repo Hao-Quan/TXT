@@ -19,15 +19,6 @@ using namespace tinyxml2;
 
 int main(){
 
-	//Data_link down65_data_link;
-	//down65_data_link.msg_element_id = "65";
-	//down65_data_link.param1 = "flight_id";
-	//down65_data_link.param2 = "date";
-	//down65_data_link.param3 = "time";
-
-	//down65_data_link.value1 = "AAL123";
-	//down65_data_link.value2 = "2002/03/29";
-	//down65_data_link.value3 = "10:59:33";
 
 	/**************************************************
 	*		DOWN: STRUCTURE to Byte Data				*
@@ -341,41 +332,223 @@ int main(){
 
 	vector<string> byets_down2 = down_struct_to_bytes(dldown2, "Down2.xml");
 
-	//Data_link dldown1 = up_XML_to_struct("Down1.xml");
-	//vector<string> byets_down1 = down_struct_to_bytes(dldown1, "Down1.xml");
+	
+	Data_link dldown23;
+	dldown23.msg_element_id = "23";
+	dldown23.param1 = "flight-id";
+	dldown23.param2 = "direction";
+	dldown23.param3 = "date";
+	dldown23.param4 = "time";
+	dldown23.param5 = "msg-element";
+	dldown23.param6 = "id";
+	dldown23.param7 = "clearance";
+	dldown23.param8 = "type";
+	dldown23.param9 = "procedure";
+	dldown23.param10 = "name";
+	dldown23.param11 = "type";
+	dldown23.param12 = "procedure-transitoin";
 
-	//Data_link dldown2 = up_XML_to_struct("Down2.xml");
-	//vector<string> byets_down2 = down_struct_to_bytes(dldown2, "Down2.xml");
+	dldown23.value1 = "ABC333";
+	dldown23.value2 = "down";
+	dldown23.value3 = "2018/03/12";
+	dldown23.value4 = "22:36:43";
+	dldown23.value5 = "";
+	dldown23.value6 = "23";
+	dldown23.value7 = "";
+	dldown23.value8 = "approach";
+	dldown23.value9 = "";
+	dldown23.value10 = "cane";
+	dldown23.value11 = "arrival";
+	dldown23.value12 = "ciao";
 
-	//Data_link dldown23 = up_XML_to_struct("Down23.xml");
-	//vector<string> byets_down23 = down_struct_to_bytes(dldown23, "Down23.xml");
+	vector<string> byets_down23 = down_struct_to_bytes(dldown23, "Down23.xml");
 
-	//Data_link dldown62 = up_XML_to_struct("Down62.xml");
-	//vector<string> byets_down62 = down_struct_to_bytes(dldown62, "Down62.xml");
 
-	//Data_link dldown65 = up_XML_to_struct("Down65.xml");
-	//vector<string> byets_down65 = down_struct_to_bytes(dldown65, "Down65.xml");
-	//
-	//Data_link dldown97 = up_XML_to_struct("Down97.xml");
-	//vector<string> byets_down97 = down_struct_to_bytes(dldown97, "Down97.xml");
+	Data_link dldown62;
+	dldown62.msg_element_id = "62";
+	dldown62.param1 = "flight-id";
+	dldown62.param2 = "direction";
+	dldown62.param3 = "date";
+	dldown62.param4 = "time";
+	dldown62.param5 = "msg-element";
+	dldown62.param6 = "id";
+	dldown62.param7 = "errorInformation";
 
-	//Data_link dldown98 = up_XML_to_struct("Down98.xml");
-	//vector<string> byets_down98 = down_struct_to_bytes(dldown98, "Down98.xml");
+	dldown62.value1 = "ABC333";
+	dldown62.value2 = "down";
+	dldown62.value3 = "2018/03/12";
+	dldown62.value4 = "22:36:43";
+	dldown62.value5 = "";
+	dldown62.value6 = "62";
+	dldown62.value7 = "insufficient resources";
 
-	//Data_link dldown1 = up_XML_to_struct("Down100.xml");
-	//vector<string> byets_down1 = down_struct_to_bytes(dldown1, "Down100.xml");
+	vector<string> byets_down62 = down_struct_to_bytes(dldown62, "Down62.xml");
 
-	//Data_link dldown1 = up_XML_to_struct("Down145.xml");
-	//vector<string> byets_down1 = down_struct_to_bytes(dldown1, "Down145.xml");
 
-	//Data_link dldown1 = up_XML_to_struct("Down155.xml");
-	//vector<string> byets_down1 = down_struct_to_bytes(dldown1, "Down155.xml");
+	Data_link dldown65;
+	dldown65.msg_element_id = "65";
+	dldown65.param1 = "flight-id";
+	dldown65.param2 = "direction";
+	dldown65.param3 = "date";
+	dldown65.param4 = "time";
+	dldown65.param5 = "msg-element";
+	dldown65.param6 = "id";
+	dldown65.param7 = "reason";
 
-	//Data_link dldown139 = up_XML_to_struct("Down139.xml");
-	//vector<string> byets_down139 = down_struct_to_bytes(dldown139, "Down139.xml");
+	dldown65.value1 = "ABC333";
+	dldown65.value2 = "down";
+	dldown65.value3 = "2018/03/12";
+	dldown65.value4 = "22:36:43";
+	dldown65.value5 = "";
+	dldown65.value6 = "65";
+	dldown65.value7 = "weather";
 
-	//Data_link dldown140 = up_XML_to_struct("Down140.xml");
-	//vector<string> byets_down140 = down_struct_to_bytes(dldown140, "Down140.xml");
+	vector<string> byets_down65 = down_struct_to_bytes(dldown65, "Down65.xml");
+
+
+	Data_link dldown97;
+	dldown97.msg_element_id = "97";
+	dldown97.param1 = "flight-id";
+	dldown97.param2 = "direction";
+	dldown97.param3 = "date";
+	dldown97.param4 = "time";
+	dldown97.param5 = "msg-element";
+	dldown97.param6 = "id";
+	dldown97.param7 = "freetext";
+
+	dldown97.value1 = "ABC333";
+	dldown97.value2 = "down";
+	dldown97.value3 = "2018/03/12";
+	dldown97.value4 = "22:36:43";
+	dldown97.value5 = "";
+	dldown97.value6 = "97";
+	dldown97.value7 = "www";
+
+	vector<string> byets_down97 = down_struct_to_bytes(dldown97, "Down97.xml");
+
+	Data_link dldown98;
+	dldown98.msg_element_id = "98";
+	dldown98.param1 = "flight-id";
+	dldown98.param2 = "direction";
+	dldown98.param3 = "date";
+	dldown98.param4 = "time";
+	dldown98.param5 = "msg-element";
+	dldown98.param6 = "id";
+	dldown98.param7 = "freetext";
+
+	dldown98.value1 = "ABC333";
+	dldown98.value2 = "down";
+	dldown98.value3 = "2002/03/29";
+	dldown98.value4 = "10:59:33";
+	dldown98.value5 = "";
+	dldown98.value6 = "98";
+	dldown98.value7 = "www";
+
+	vector<string> byets_down98 = down_struct_to_bytes(dldown98, "Down98.xml");
+
+	Data_link dldown100;
+	dldown100.msg_element_id = "100";
+	dldown100.param1 = "flight-id";
+	dldown100.param2 = "direction";
+	dldown100.param3 = "date";
+	dldown100.param4 = "time";
+	dldown100.param5 = "msg-element";
+	dldown100.param6 = "id";
+
+	dldown100.value1 = "ABC333";
+	dldown100.value2 = "down";
+	dldown100.value3 = "2018/03/12";
+	dldown100.value4 = "22:36:43";
+	dldown100.value5 = "";
+	dldown100.value6 = "100";
+
+	vector<string> byets_down100 = down_struct_to_bytes(dldown100, "Down100.xml");
+	
+	Data_link dldown139;
+	dldown139.msg_element_id = "139";
+	dldown139.param1 = "flight-id";
+	dldown139.param2 = "direction";
+	dldown139.param3 = "date";
+	dldown139.param4 = "time";
+	dldown139.param5 = "msg-element";
+	dldown139.param6 = "id";
+	dldown139.param7 = "speed"; 
+	dldown139.param8 = "units"; 
+	dldown139.param9 = "use"; 
+
+	dldown139.value1 = "ABC333";
+	dldown139.value2 = "down";
+	dldown139.value3 = "2018/03/12";
+	dldown139.value4 = "22:36:43";
+	dldown139.value5 = "";
+	dldown139.value6 = "139";
+	dldown139.value7 = "245";
+	dldown139.value8 = "trueMetric";
+	dldown139.value9 = "high";
+
+	vector<string> byets_down139 = down_struct_to_bytes(dldown139, "Down139.xml");
+	
+
+	Data_link dldown140;
+	dldown140.msg_element_id = "140";
+	dldown140.param1 = "flight-id";
+	dldown140.param2 = "direction";
+	dldown140.param3 = "date";
+	dldown140.param4 = "time";
+	dldown140.param5 = "msg-element";
+	dldown140.param6 = "id";
+	dldown140.param7 = "speed"; 
+	dldown140.param8 = "units"; 
+	dldown140.param9 = "use"; 
+
+	dldown140.value1 = "ABC333";
+	dldown140.value2 = "down";
+	dldown140.value3 = "2018/03/12";
+	dldown140.value4 = "22:36:43";
+	dldown140.value5 = "";
+	dldown140.value6 = "140";
+	dldown140.value7 = "245";
+	dldown140.value8 = "trueMetric";
+	dldown140.value9 = "high";
+
+	vector<string> byets_down140 = down_struct_to_bytes(dldown140, "Down140.xml");
+
+	Data_link dldown145;
+	dldown145.msg_element_id = "145";
+	dldown145.param1 = "flight-id";
+	dldown145.param2 = "direction";
+	dldown145.param3 = "date";
+	dldown145.param4 = "time";
+	dldown145.param5 = "msg-element";
+	dldown145.param6 = "id";
+
+	dldown145.value1 = "ABC333";
+	dldown145.value2 = "down";
+	dldown145.value3 = "2018/03/12";
+	dldown145.value4 = "22:36:43";
+	dldown145.value5 = "";
+	dldown145.value6 = "145";
+
+	vector<string> byets_down145 = down_struct_to_bytes(dldown145, "Down145.xml");
+
+	Data_link dldown155;
+	dldown155.msg_element_id = "155";
+	dldown155.param1 = "flight-id";
+	dldown155.param2 = "direction";
+	dldown155.param3 = "date";
+	dldown155.param4 = "time";
+	dldown155.param5 = "msg-element";
+	dldown155.param6 = "id";
+
+	dldown155.value1 = "ABC333";
+	dldown155.value2 = "down";
+	dldown155.value3 = "2018/03/12";
+	dldown155.value4 = "22:36:43";
+	dldown155.value5 = "";
+	dldown155.value6 = "155";
+
+	vector<string> byets_down155 = down_struct_to_bytes(dldown155, "Down155.xml");
+
 
 	cout << "\n";
 	

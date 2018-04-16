@@ -1,11 +1,9 @@
-<cpdlc-message flight-id="ABC321" direction="down">
+<cpdlc-message flight-id="ABC333" direction="down">
     <header>
-        <date>up</date>
-        <time>2018/03/12</time>
+        <date>2018/03/12</date>
+        <time>22:36:43</time>
     </header>
     <msg-element id="140">
-        <speed units="trueMetric" use="high">
-			245
-		</speed>
+        <speed units="trueMetric" use="high">245</speed>
     </msg-element>
 </cpdlc-message>
