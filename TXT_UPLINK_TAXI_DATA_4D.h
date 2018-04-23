@@ -51,7 +51,7 @@ typedef struct __attribute__((packed)) // This struct will be repeated 1 times i
     int32_t PUSH_BACK_POSITION_TO_LENGTH;
     char PUSH_BACK_POSITION_TO[PUSH_BACK_POSITION_TO_LENGTH];
     int32_t TAXI_ROUTE_LENGTH[100];
-    int32_t TAXI_ROUTE_NAME_LENGTH[100];
+    int32_t TAXI_ROUTE_NAME_LENGTH;
     char TAXI_ROUTE_NAME[100];
     int32_t TAXI_ROUTE_TYPE[100];
     int32_t TAXI_DURATION;

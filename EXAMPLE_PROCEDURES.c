@@ -1,5 +1,7 @@
 procedure setDataIn
 {
+    
+   // DATA HEADER
    dataLinkIn.FLIGHT_ID_LENGTH.Value = FMS_Executable::aaemInter->host2Datalink->FLIGHT_ID_LENGTH;
    dataLinkIn.FLIGHT_ID_LENGTH.Status = VALID;
    for (int u = 0; u<dataLinkIn.FLIGHT_ID_LENGTH.Value; u++)
@@ -175,17 +177,121 @@ procedure setDataIn
     dataLinkIn.FREE_TEXT_MESSAGE.status = VALID;
     for (int u = 0; u<dataLinkIn.FREE_TEXT_MESSAGE_LENGTH.Value; u++)
             dataLinkIn.FREE_TEXT_MESSAGE[u] = FMS_Executable::aaemInter->host2Datalink->FREE_TEXT_MESSAGE[u];
+        
+}
+
+procedure setDataIn_Taxi {
+    // DATA HEADER
+    dataLinkIn.FLIGHT_ID_LENGTH.Value = FMS_Executable::aaemInter->host2Datalink->FLIGHT_ID_LENGTH;
+    dataLinkIn.FLIGHT_ID_LENGTH.Status = VALID;
+    for (int u = 0; u<dataLinkIn.FLIGHT_ID_LENGTH.Value; u++)
+        dataLinkIn.FLIGHT_ID[u] = FMS_Executable::aaemInter->host2Datalink->FLIGHT_ID[u];
+        
+    dataLinkIn.DIRECTION.value = FMS_Executable::aaemInter->host2Datalink->DIRECTION;
+    dataLinkIn.TIME_STAMP_DATA_YEAR.value = FMS_Executable::aaemInter->host2Datalink->TIME_STAMP_DATA_YEAR;
+    dataLinkIn.TIME_STAMP_DATA_MONTH.value = FMS_Executable::aaemInter->host2Datalink->TIME_STAMP_DATA_MONTH;
+    dataLinkIn.TIME_STAMP_DATA_DAY.value = FMS_Executable::aaemInter->host2Datalink->TIME_STAMP_DATA_DAY;
+    dataLinkIn.TIME_STAMP_DATA_SECOND.value = FMS_Executable::aaemInter->host2Datalink->TIME_STAMP_DATA_SECOND;
+    dataLinkIn.TIME_STAMP_DATA_MINUTE.value = FMS_Executable::aaemInter->host2Datalink->TIME_STAMP_DATA_MINUTE;
+    dataLinkIn.TIME_STAMP_DATA_HOUR.value = FMS_Executable::aaemInter->host2Datalink->TIME_STAMP_DATA_HOUR;
+    dataLinkIn.ID.value = FMS_Executable::aaemInter->host2Datalink->ID;
+        
+    // DATA PAYLOAD
+    dataLinkIn.FREE_TEXT_MESSAGE_LENGTH.value = FMS_Executable::aaemInter->host2Datalink->FLIGHT_ID_LENGTH;
+    dataLinkIn.FREE_TEXT_MESSAGE_LENGTH.Status = VALID;
+    for (int u = 0; u<dataLinkIn.FREE_TEXT_MESSAGE_LENGTH.Value; u++)
+        dataLinkIn.FREE_TEXT_MESSAGE[u] = FMS_Executable::aaemInter->host2Datalink->FREE_TEXT_MESSAGE[u];
+    
+    dataLinkIn.REVISION_REASON.value = FMS_Executable::aaemInter->host2Datalink->REVISION_REASON;
+    dataLinkIn.CLEARANCE_TYPE_R.value = FMS_Executable::aaemInter->host2Datalink->CLEARANCE_TYPE_R;
+    dataLinkIn.ASSIGNED_TIME_PERFORM.value = FMS_Executable::aaemInter->host2Datalink->ASSIGNED_TIME_PERFORM;
+    dataLinkIn.ASSIGNED_TIME_TYPE.value = FMS_Executable::aaemInter->host2Datalink->ASSIGNED_TIME_TYPE;
+    dataLinkIn.ASSIGNED_TIME_SECOND.value = FMS_Executable::aaemInter->host2Datalink->ASSIGNED_TIME_SECOND;
+    dataLinkIn.ASSIGNED_TIME_MINUTE.value = FMS_Executable::aaemInter->host2Datalink->ASSIGNED_TIME_MINUTE;
+    dataLinkIn.ASSIGNED_TIME_HOUR.value = FMS_Executable::aaemInter->host2Datalink->ASSIGNED_TIME_HOUR;
+    dataLinkIn.PUSH_BACK_DIRECTION.value = FMS_Executable::aaemInter->host2Datalink->PUSH_BACK_DIRECTION;
             
-       
-    //TO BE CONTINUE..
-}	
+    dataLinkIn.PUSH_BACK_POSITION_FROM_LENGTH.value = FMS_Executable::aaemInter->host2Datalink->PUSH_BACK_POSITION_FROM_LENGTH;
+    for (int u = 0; u<dataLinkIn.PUSH_BACK_POSITION_FROM_LENGTH.Value; u++)
+        dataLinkIn.PUSH_BACK_POSITION_FROM[u] = FMS_Executable::aaemInter->host2Datalink->PUSH_BACK_POSITION_FROM[u];
+    
+    dataLinkIn.PUSH_BACK_POSITION_TO_LENGTH.value = FMS_Executable::aaemInter->host2Datalink->PUSH_BACK_POSITION_TO_LENGTH;
+    for (int u = 0; u<dataLinkIn.PUSH_BACK_POSITION_TO_LENGTH.Value; u++)
+        dataLinkIn.PUSH_BACK_POSITION_TO[u] = FMS_Executable::aaemInter->host2Datalink->PUSH_BACK_POSITION_TO[u];
+    
+    for (int u = 0; u<100.Value; u++)
+        dataLinkIn.TAXI_ROUTE_LENGTH[u] = FMS_Executable::aaemInter->host2Datalink->TAXI_ROUTE_LENGTH[u];
+    
+    dataLinkIn.TAXI_ROUTE_NAME_LENGTH.value = FMS_Executable::aaemInter->host2Datalink->TAXI_ROUTE_NAME_LENGTH;
+    for (int u = 0; u<dataLinkIn.TAXI_ROUTE_NAME_LENGTH.Value; u++)
+        dataLinkIn.TAXI_ROUTE_NAME[u] = FMS_Executable::aaemInter->host2Datalink->TAXI_ROUTE_NAME[u];
+        
+    for (int u = 0; u<100.Value; u++)
+        dataLinkIn.TAXI_ROUTE_TYPE[u] = FMS_Executable::aaemInter->host2Datalink->TAXI_ROUTE_TYPE[u];
+   
+    dataLinkIn.TAXI_DURATION.value = FMS_Executable::aaemInter->host2Datalink->TAXI_DURATION;
+    dataLinkIn.TAXI_RESUME_CONDITION.value = FMS_Executable::aaemInter->host2Datalink->TAXI_RESUME_CONDITION;
+    dataLinkIn.GROUND_LOCATION_TYPE.value = FMS_Executable::aaemInter->host2Datalink->GROUND_LOCATION_TYPE;
+
+    dataLinkIn.GROUND_LOCATION_NAME_LENGTH.value = FMS_Executable::aaemInter->host2Datalink->GROUND_LOCATION_NAME_LENGTH;
+    for (int u = 0; u<dataLinkIn.PUSH_BACK_POSITION_FROM_LENGTH.Value; u++)
+        dataLinkIn.GROUND_LOCATION_NAME[u] = FMS_Executable::aaemInter->host2Datalink->GROUND_LOCATION_NAME[u];
+        
+    dataLinkIn.GROUND_LOCATION_LATITUDE.value = FMS_Executable::aaemInter->host2Datalink->GROUND_LOCATION_LATITUDE;
+    dataLinkIn.GROUND_LOCATION_LONGITUDE.value = FMS_Executable::aaemInter->host2Datalink->GROUND_LOCATION_LONGITUDE;
+    
+    dataLinkIn.RUNWAY_LENGTH.value = FMS_Executable::aaemInter->host2Datalink->RUNWAY_LENGTH;
+    for (int u = 0; u<dataLinkIn.RUNWAY_LENGTH.Value; u++)
+        dataLinkIn.RUNWAY[u] = FMS_Executable::aaemInter->host2Datalink->RUNWAY[u];
+    
+    dataLinkIn.DISTANCE_GROUND.value = FMS_Executable::aaemInter->host2Datalink->DISTANCE_GROUND;
+    dataLinkIn.INTERSECTION_TYPE.value = FMS_Executable::aaemInter->host2Datalink->INTERSECTION_TYPE;
+    
+    dataLinkIn.INTERSECTION_NAME_LENGTH.value = FMS_Executable::aaemInter->host2Datalink->INTERSECTION_NAME_LENGTH;
+    for (int u = 0; u<dataLinkIn.INTERSECTION_NAME_LENGTH.Value; u++)
+        dataLinkIn.INTERSECTION_NAME[u] = FMS_Executable::aaemInter->host2Datalink->INTERSECTION_NAME[u];
+    
+}
 	
 	
 procedure setDataOut
 {
-	FMS_Executable::aaemInter->fms2DataLink->FLIGHT_ID_LENGHT = dataLinkOut.FLIGHT_ID_LENGHT.Value);
-	   for (int u = 0; u<FMS_Executable::aaemInter->fms2DataLink->FLIGHT_ID_LENGH; u++) 
-	      FMS_Executable::aaemInter->fms2host->FLIGHT[u] = dataLinkOut.FLIGHT.value[u];
+    // DATA HEADER
+	FMS_Executable::aaemInter->fms2DataLink->FLIGHT_ID_LENGTH = dataLinkOut.FLIGHT_ID_LENGTH.Value;
+    for (int u = 0; u<FMS_Executable::aaemInter->fms2DataLink->FLIGHT_ID_LENGTH; u++)
+       FMS_Executable::aaemInter->fms2host->FLIGHT[u] = dataLinkOut.FLIGHT.value[u];
 		
+    FMS_Executable::aaemInter->fms2DataLink->DIRECTION = dataLinkOut.DIRECTION.Value;
+    FMS_Executable::aaemInter->fms2DataLink->TIME_STAMP_DATA_YEAR = dataLinkOut.TIME_STAMP_DATA_YEAR.Value;
+    FMS_Executable::aaemInter->fms2DataLink->TIME_STAMP_DATA_MONTH = dataLinkOut.TIME_STAMP_DATA_MONTH.Value;
+    FMS_Executable::aaemInter->fms2DataLink->TIME_STAMP_DATA_DAY = dataLinkOut.TIME_STAMP_DATA_DAY.Value;
+    FMS_Executable::aaemInter->fms2DataLink->TIME_STAMP_DATA_SECOND = dataLinkOut.TIME_STAMP_DATA_SECOND.Value;
+    FMS_Executable::aaemInter->fms2DataLink->TIME_STAMP_DATA_MINUTE = dataLinkOut.TIME_STAMP_DATA_MINUTE.Value;
+    FMS_Executable::aaemInter->fms2DataLink->TIME_STAMP_DATA_HOUR = dataLinkOut.TIME_STAMP_DATA_HOUR.Value;
+    FMS_Executable::aaemInter->fms2DataLink->ID = dataLinkOut.ID.Value;
+        
+    // DATA PAYLOAD
+    FMS_Executable::aaemInter->fms2DataLink->INSTRUCTION_NAME_TYPE = dataLinkOut.INSTRUCTION_NAME_TYPE.Value;
+        
+    FMS_Executable::aaemInter->fms2DataLink->INSTRUCTION_NAME_LENGTH = dataLinkOut.INSTRUCTION_NAME_LENGTH.Value;
+    for (int u = 0; u<FMS_Executable::aaemInter->fms2DataLink->INSTRUCTION_NAME_LENGTH; u++)
+        FMS_Executable::aaemInter->fms2host->INSTRUCTION_NAME[u] = dataLinkOut.FLIGHT.INSTRUCTION_NAME[u];
+        
+    FMS_Executable::aaemInter->fms2DataLink->DEPARTURE_DATA_PROCEDURE_LENGTH = dataLinkOut.DEPARTURE_DATA_PROCEDURE_LENGTH.Value;
+    for (int u = 0; u<FMS_Executable::aaemInter->fms2DataLink->DEPARTURE_DATA_PROCEDURE_LENGTH; u++)
+        FMS_Executable::aaemInter->fms2host->DEPARTURE_DATA_PROCEDURE[u] = dataLinkOut.FLIGHT.DEPARTURE_DATA_PROCEDURE[u];
+
+    FMS_Executable::aaemInter->fms2DataLink->DEPARTURE_DATA_AIRPORT_LENGTH = dataLinkOut.DEPARTURE_DATA_AIRPORT_LENGTH.Value;
+    for (int u = 0; u<FMS_Executable::aaemInter->fms2DataLink->DEPARTURE_DATA_AIRPORT_LENGTH; u++)
+        FMS_Executable::aaemInter->fms2host->DEPARTURE_DATA_AIRPORT[u] = dataLinkOut.FLIGHT.DEPARTURE_DATA_AIRPORT[u];
+        
+    FMS_Executable::aaemInter->fms2DataLink->DEPARTURE_DATA_RWY_LENGTH = dataLinkOut.DEPARTURE_DATA_RWY_LENGTH.Value;
+    for (int u = 0; u<FMS_Executable::aaemInter->fms2DataLink->DEPARTURE_DATA_AIRPORT_LENGTH; u++)
+        FMS_Executable::aaemInter->fms2host->DEPARTURE_DATA_RWY[u] = dataLinkOut.FLIGHT.DEPARTURE_DATA_RWY[u];
+    
+    FMS_Executable::aaemInter->fms2DataLink->DEPARTURE_DATA_SID_LENGTH = dataLinkOut.DEPARTURE_DATA_SID_LENGTH.Value;
+    for (int u = 0; u<FMS_Executable::aaemInter->fms2DataLink->DEPARTURE_DATA_AIRPORT_LENGTH; u++)
+        FMS_Executable::aaemInter->fms2host->DEPARTURE_DATA_RWY[u] = dataLinkOut.FLIGHT.DEPARTURE_DATA_RWY[u];
+    
 	//TO BE CONTINUE...	
 }
